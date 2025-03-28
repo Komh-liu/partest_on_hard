@@ -1,0 +1,39 @@
+{
+    "task": {
+      "type": "任务类型",
+      "description": "任务描述",
+      "task_specific": {
+        "参数1": "值1",
+        "参数2": "值2"
+      }
+    },
+    "hardware": {
+      "cpu": {
+        "cores": "CPU核心数",
+        "threads": "CPU线程数",
+        "frequency": "CPU频率",
+        "available": "是否可用"
+      },
+      "gpu": {
+        "cuda_cores": "CUDA核心数",
+        "memory": {
+          "size": "显存大小",
+          "type": "显存类型"
+        },
+        "available": "是否可用"
+      }
+    },
+    "resources": {
+      "cpu_memory": "CPU内存大小",
+      "gpu_memory": "GPU显存大小"
+    },
+    "data_format": {
+      "file_type": "文件类型",
+      "data_structure": "数据结构",
+      "data_type": "数据类型",
+      "additional_metadata": {
+        "参数1": "值1",
+        "参数2": "值2"
+      }
+    }
+  }
