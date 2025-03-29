@@ -3,6 +3,12 @@
 #include <vector>
 #include <unordered_map>
 #include <omp.h>
+#include <chrono>
+#include <sys/resource.h>
+#include <sys/time.h>
+
+// 假设 multiplyWithTranspose 在 generate.hpp 中定义
+#include "generate.hpp"
 
 // 定义三元组结构体
 struct Triplet {
@@ -26,27 +32,6 @@ std::vector<Triplet> readSparseMatrix(const std::string& filename) {
     return matrix;
 }
 
-// 计算矩阵与它转置的乘积
-std::unordered_map<int, std::unordered_map<int, float>> multiplyWithTranspose(const std::vector<Triplet>& matrix, int rows, int cols) {
-    std::unordered_map<int, std::unordered_map<int, float>> result;
-    int numThreads = omp_get_max_threads();
-    #pragma omp parallel for num_threads(numThreads)
-    for (size_t i = 0; i < matrix.size(); ++i) {
-        for (size_t j = 0; j < matrix.size(); ++j) {
-            if (matrix[i].col == matrix[j].col) {
-                int row = matrix[i].row;
-                int col = matrix[j].row;
-                float prod = matrix[i].value * matrix[j].value;
-                #pragma omp critical
-                {
-                    result[row][col] += prod;
-                }
-            }
-        }
-    }
-    return result;
-}
-
 // 将结果保存到文件中
 void saveResult(const std::unordered_map<int, std::unordered_map<int, float>>& result, const std::string& filename) {
     std::ofstream file(filename);
@@ -63,6 +48,20 @@ void saveResult(const std::unordered_map<int, std::unordered_map<int, float>>& r
     }
 }
 
+// 获取 CPU 时间
+double getCPUTime() {
+    struct rusage ru;
+    getrusage(RUSAGE_SELF, &ru);
+    return (double)ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec / 1000000.0;
+}
+
+// 获取内存使用情况
+long getMemoryUsage() {
+    struct rusage ru;
+    getrusage(RUSAGE_SELF, &ru);
+    return ru.ru_maxrss;
+}
+
 int main() {
     int rows = 100;
     int cols = 100;
@@ -72,13 +71,31 @@ int main() {
     // 读取稀疏矩阵
     std::vector<Triplet> matrix = readSparseMatrix(inputFilename);
 
+    // 记录开始时间
+    auto start_time = std::chrono::high_resolution_clock::now();
+    double start_cpu_time = getCPUTime();
+    long start_memory = getMemoryUsage();
+
     // 计算矩阵与它转置的乘积
     std::unordered_map<int, std::unordered_map<int, float>> product = multiplyWithTranspose(matrix, rows, cols);
+
+    // 记录结束时间
+    auto end_time = std::chrono::high_resolution_clock::now();
+    double end_cpu_time = getCPUTime();
+    long end_memory = getMemoryUsage();
+
+    // 计算时间和内存使用情况
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+    double cpu_time = end_cpu_time - start_cpu_time;
+    long memory_usage = end_memory - start_memory;
 
     // 保存结果到文件
     saveResult(product, outputFilename);
 
     std::cout << "矩阵乘法完成，结果已保存到 " << outputFilename << std::endl;
+    std::cout << "测试消耗时间: " << duration << " 毫秒" << std::endl;
+    std::cout << "CPU 占用时间: " << cpu_time << " 秒" << std::endl;
+    std::cout << "内存占用: " << memory_usage << " KB" << std::endl;
 
     return 0;
-}    
+}
