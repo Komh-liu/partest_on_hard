@@ -1,11 +1,11 @@
 {
     "task": {
-      "type": "graph_bfs",
-      "description": "这是一个包含100万个节点和500万条边的图，以邻接表的形式存储在graph.json文件中，从节点0开始进行广度优先搜索。",
+      "type": "matrix_multiply",
+      "description": "这是一个维度为18528和123628的矩阵，以稀疏矩阵三元组(item item value)的形式存储在matrix.txt文件中,计算矩阵与它转置的乘积并保存在新的txt中",
+      "example": "3 3 1",
       "task_specific": {
-        "nodes_count": 1000000,
-        "edges_count": 5000000,
-        "start_node": 0
+        "row": 18528,
+        "col": 123628
       }
     },
     "hardware": {

@@ -1,13 +1,21 @@
 import json
 from openai import OpenAI
-
+from config import CONFIG
 def check_available_devices(hardware):
     # 检查可用设备
     available_devices = []
-    if hardware["cpu"]["available"] == "True":
-        available_devices.append(hardware["cpu"])
-    if hardware["gpu"]["available"] == "True":
-        available_devices.append(hardware["gpu"])
+    if hardware.get("cpu", {}).get("available") == "True":
+        available_devices.append({
+            "type": "CPU",
+            "cores": hardware["cpu"].get("cores", "N/A"),
+            "cpu_memory": hardware.get("resources", {}).get("cpu_memory", "N/A")
+        })
+    if hardware.get("gpu", {}).get("available") == "True":
+        available_devices.append({
+            "type": "GPU",
+            "cores": hardware["gpu"].get("cuda_cores", "N/A"),
+            "memory": hardware["gpu"].get("memory", {})
+        })
     return available_devices
 
 def generate_code(config_path):
@@ -22,13 +30,13 @@ def generate_code(config_path):
 
     # 检查可用设备
     available_devices = check_available_devices(config["hardware"])
-    available_devices_info = ", ".join([f"{device['type']}（核心数/线程数: {device.get('cores', 'N/A')}，内存: {device['memory']['size'] if device['type'] == 'GPU' else device.get('cpu_memory', 'N/A')}）" for device in available_devices])
+    available_devices_info = ", ".join([f"{device['type']}（核心数/线程数: {device.get('cores', 'N/A')}，内存: {device['memory'].get('size', 'N/A') if device['type'] == 'GPU' else device.get('cpu_memory', 'N/A')}）" for device in available_devices])
     
     # 构建系统提示词
     system_prompt = f"""你是一个C++专家，需要根据以下配置生成优化的并行计算代码：
     - 任务类型: {config['task']['type']}
     - 任务描述: {config['task']['description']}
-    - 硬件配置: CPU核心数: {config['hardware']['cpu']['cores']}, GPU显存: {config['hardware']['gpu']['memory']['size']}
+    - 硬件配置: CPU核心数: {config['hardware'].get('cpu', {}).get('cores', 'N/A')}, GPU显存: {config['hardware'].get('gpu', {}).get('memory', {}).get('size', 'N/A')}
     - 可用设备: {available_devices_info}
     - 数据文件格式: 文件类型: {config['data_format']['file_type']}, 数据结构: {config['data_format']['data_structure']}, 数据类型: {config['data_format']['data_type']}
     """
@@ -41,7 +49,7 @@ def generate_code(config_path):
 
     # 初始化OpenAI客户端
     client = OpenAI(
-        api_key="your_api_key",  # 请替换为你的API密钥
+        api_key=CONFIG["api_key"],
         base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
     )
 
@@ -53,11 +61,11 @@ def generate_code(config_path):
 
     # 调用API
     completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",  # 请替换为你想要使用的模型
+        model=CONFIG["model"],
         messages=[
             {
                 "role": "system",
-                "content": "请严格按以下格式输出代码：\n1. 代码必须用\n```cpp\n开始\n2. 用\n```\n结束\n3. 中间只包含C++代码\n4.输出只包含目标函数定义和必要头文件的代码，禁止添加任何其他函数\n5.调用的函数必须正确传入参数,变量必须被正确定义"
+                "content": "请严格按以下格式输出代码：\n1. 代码必须用\n```cpp\n开始\n2. 用\n```\n结束\n3. 中间只包含C++代码\n4.输出只包含所有函数、变量和必要头文件的代码\n5.调用的函数必须正确传入参数,变量必须被正确定义"
             },
             *messages
         ],
