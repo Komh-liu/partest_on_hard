@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
     Graph graph = loadGraphFromFile(input_file);
 
     if (graph.numVertices > 0) {
-        int bfs_start_vertex = 214328887; // 修改变量名以避免冲突
+        int bfs_start_vertex = 812804; // 修改变量名以避免冲突 812804
         std::cout << "BFS starting from vertex " << bfs_start_vertex << ":\n";
         std::vector<int> bfs_result;
         std::vector<int> result = loadFileToVector(result_file);

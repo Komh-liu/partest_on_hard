@@ -60,7 +60,7 @@
         }
     },
     "resources": {
-        "cpu_memory": "16 GB",
+        "cpu_memory": "20 GB",
         "gpu_memory": "24 GB"
     },
     "tasks": [
@@ -89,8 +89,8 @@
         {
             "type": "graph_bfs",
             "function_signatures": {
-                "CUDA": "void bfs(const CUDAGraph& graph, int start,std::vector<int> & result); //start为起始节点,按照bfs顺序将结果保存到result中，将结果打印到终端",
-                "other": "void bfs(const Graph& graph, int start,std::vector<int> & result);//start为起始节点,按照bfs顺序将结果保存到result中，将结果打印到终端"
+                "CUDA": "void bfs(const CUDAGraph& graph, int start,std::vector<int> & result); //start为起始节点,按照bfs顺序将结果保存到result中，将result的最终大小打印到终端",
+                "other": "void bfs(const Graph& graph, int start,std::vector<int> & result);//start为起始节点,按照bfs顺序将结果保存到result中，将最终大小打印到终端"
             },
             "contexts": {
                 "CUDA": "struct CUDAGraph {\n\tint numVertices;\n\tint numEdges;\n\tint* offset;    // 顶点邻接表偏移数组\n\tint* edges;     // 邻接顶点数据数组\n};//结构已在其他文件定义，不要在代码中输出",

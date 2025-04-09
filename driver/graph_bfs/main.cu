@@ -26,46 +26,69 @@ std::vector<int> loadFileToVector(const std::string& filename) {
 CUDAGraph loadCUDAGraphFromFile(const std::string& filename) {
     std::ifstream file(filename);
     CUDAGraph graph;
-    std::vector<std::vector<int>> tempGraph;
 
     if (!file.is_open()) {
         std::cerr << "无法打开文件: " << filename << std::endl;
         return {0, 0, nullptr, nullptr};
     }
 
-    // 读取数据到临时邻接表
+    std::vector<int> tempEdges;
+    std::vector<int> tempOffset;
+    tempOffset.push_back(0);
     int maxVertex = 0;
+
+    // First pass: Calculate maxVertex and the number of neighbors for each vertex
     std::string line;
     while (std::getline(file, line)) {
+        std::replace(line.begin(), line.end(), ',', ' ');
         std::istringstream iss(line);
         int u, v;
         if (iss >> u >> v) {
             maxVertex = std::max({maxVertex, u, v});
-            if (tempGraph.size() <= maxVertex) tempGraph.resize(maxVertex + 1);
-            tempGraph[u].push_back(v);
-            tempGraph[v].push_back(u);
+            if (tempOffset.size() <= u + 1) tempOffset.resize(u + 2, 0);
+            if (tempOffset.size() <= v + 1) tempOffset.resize(v + 2, 0);
+            tempOffset[u + 1]++;
+            tempOffset[v + 1]++; // Assuming undirected graph
         }
     }
     file.close();
 
-    // 转换为CSR格式
-    graph.numVertices = tempGraph.size();
+    graph.numVertices = maxVertex + 1;
     graph.offset = new int[graph.numVertices + 1];
-    graph.offset[0] = 0;
-    
-    for (int i = 0; i < tempGraph.size(); ++i) {
-        graph.offset[i+1] = graph.offset[i] + tempGraph[i].size();
-    }
-    
-    graph.numEdges = graph.offset[tempGraph.size()];
+    std::partial_sum(tempOffset.begin(), tempOffset.end(), graph.offset);
+    graph.numEdges = graph.offset[graph.numVertices];
     graph.edges = new int[graph.numEdges];
-    
-    int idx = 0;
-    for (const auto& list : tempGraph) {
-        for (int v : list) {
-            graph.edges[idx++] = v;
+
+    std::vector<int> currentEdgeIndex(graph.numVertices, 0);
+
+    // Second pass: Fill the edges array
+    file.open(filename);
+    if (!file.is_open()) {
+        std::cerr << "无法重新打开文件: " << filename << std::endl;
+        delete[] graph.offset;
+        delete[] graph.edges;
+        return {0, 0, nullptr, nullptr};
+    }
+
+    while (std::getline(file, line)) {
+        std::replace(line.begin(), line.end(), ',', ' ');
+        std::istringstream iss(line);
+        int u, v;
+        if (iss >> u >> v) {
+            int indexU = graph.offset[u] + currentEdgeIndex[u];
+            if (indexU < graph.numEdges) {
+                graph.edges[indexU] = v;
+                currentEdgeIndex[u]++;
+            }
+
+            int indexV = graph.offset[v] + currentEdgeIndex[v];
+            if (indexV < graph.numEdges) {
+                graph.edges[indexV] = u;
+                currentEdgeIndex[v]++;
+            }
         }
     }
+    file.close();
 
     return graph;
 }
