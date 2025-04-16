@@ -97,7 +97,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
     else:
         print("g++编译")
         # print(main_cpp_path)
-        compile_command = f"g++ {main_cpp_path} -o {os.path.join(temp_dir, 'main')} -I{temp_dir}"
+        compile_command = f"g++ -std=c++17 {main_cpp_path} -o {os.path.join(temp_dir, 'main')} -I{temp_dir}"
 
     compile_result = subprocess.run(compile_command, shell=True, capture_output=True, text=True, cwd=temp_dir)
 

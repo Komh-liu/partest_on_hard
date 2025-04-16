@@ -5,7 +5,9 @@
 #include <vector>
 #include <string>
 #include <chrono>
-std::vector<int> load_array_from_file(const std::string& filename) {
+#include <cstdlib> // 用于 exit()
+
+std::vector<long long> load_array_from_file(const std::string& filename) {
     Array arr;
     std::ifstream file(filename);
     std::string line;
@@ -17,7 +19,7 @@ std::vector<int> load_array_from_file(const std::string& filename) {
 
     while (std::getline(file, line)) {
         std::istringstream iss(line);
-        int num;
+        long long num;
         while (iss >> num) {
             arr.push_back(num);
         }
@@ -27,8 +29,8 @@ std::vector<int> load_array_from_file(const std::string& filename) {
     return arr;
 }
 
-int load_result_from_file(const std::string& filename) {
-    int result;
+long long load_result_from_file(const std::string& filename) {
+    long long result;
     std::ifstream file(filename);
     std::string line;
 
@@ -39,7 +41,7 @@ int load_result_from_file(const std::string& filename) {
 
     while (std::getline(file, line)) {
         std::istringstream iss(line);
-        int num;
+        long long num;
         iss >> result;
     }
 
@@ -58,12 +60,12 @@ int main(int argc, char* argv[]) {
     std::string result_file_path = argv[2];
 
     // 从文件加载数组
-    std::vector<int> arr = load_array_from_file(data_file_path);
-    int result = load_result_from_file(result_file_path);
+    std::vector<long long> arr = load_array_from_file(data_file_path);
+    long long result = load_result_from_file(result_file_path);
 
     // 调用统一接口函数
     auto start = std::chrono::high_resolution_clock::now();
-    int sum = array_sum(arr);
+    long long sum = array_sum(arr);
     std::cout << "数组的和是: " << sum << std::endl; // 统一函数调用
     auto end = std::chrono::high_resolution_clock::now();
 
@@ -71,7 +73,10 @@ int main(int argc, char* argv[]) {
     std::cout << "Time: " 
               << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
               << "ms\n";
-    if(result == sum)
+    if (result == sum)
         std::cout << "验证成功" << std::endl;
+    else
+        std::cout << "验证失败" << std::endl;
+
     return 0;
 }

@@ -3,10 +3,10 @@
 #include <vector>
 
 // 定义数组类型
-using Array = std::vector<int>;
+using Array = std::vector<long long>;
 
 // 统一函数声明（核心唯一接口）
-int array_sum(const Array& arr);
+long long array_sum(const Array& arr);
 
 // 根据不同编译选项包含实现
 #if defined(USE_OPENMP)

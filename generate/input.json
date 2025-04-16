@@ -67,12 +67,12 @@
         {
             "type": "array_sum",
             "function_signatures": {
-                "CUDA": "int array_sum(const Array& arr); // 计算大数组的和",
-                "other": "int array_sum(const Array& arr); // 计算大数组的和"
+                "CUDA": "long long array_sum(const Array& arr); // 计算大数组的和",
+                "other": "long long array_sum(const Array& arr); // 计算大数组的和"
             },
             "contexts": {
-                "CUDA": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<int>;",
-                "other": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<int>;"
+                "CUDA": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<long long>;",
+                "other": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<long long>;"
             }
         },
         {
