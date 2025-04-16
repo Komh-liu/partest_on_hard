@@ -22,6 +22,17 @@ def check_available_devices(hardware):
         })
     return available_devices
 
+def extract_framework_from_code(code_content):
+    # 尝试从代码内容中推断框架
+    if "#pragma omp" in code_content:
+        return "OpenMP"
+    elif "MPI_" in code_content:
+        return "MPI"
+    elif "__global__" in code_content:
+        return "CUDA"
+    else:
+        return "Serial"
+
 def generate_code(config_path):
     with open(config_path, "r", encoding="utf-8") as f:
         config = json.load(f)
@@ -40,7 +51,12 @@ def generate_code(config_path):
         available_devices_info.append(device_info)
     available_devices_info = ", ".join(available_devices_info)
 
-    available_frameworks = ["Serial"]
+    available_frameworks = [
+        "Serial",
+        "OpenMP",
+        "MPI",
+        #"CUDA",
+    ]
 
     for task in config["tasks"]:
         system_prompt = f"""你是一个C++专家，需要根据以下配置生成优化的并行计算代码：
@@ -111,6 +127,11 @@ def generate_code(config_path):
             continue
 
         code_content = "\n".join(code_lines).strip()
+
+        # 如果未检测到框架信息，则尝试从代码内容中推断框架
+        if framework is None:
+            framework = extract_framework_from_code(code_content)
+            print(f"根据代码内容推断的框架：{framework}")
 
         print(f"选择的框架：{framework}")
         print("*" * 50)

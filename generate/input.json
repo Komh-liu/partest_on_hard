@@ -2,49 +2,7 @@
     "hardware": {
         "cpus": [
             {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
-                "threads": 16,
-                "frequency": "3.6 GHz",
-                "available": "True"
-            },
-            {
-                "cores": 8,
+                "cores": 20,
                 "threads": 16,
                 "frequency": "3.6 GHz",
                 "available": "True"
