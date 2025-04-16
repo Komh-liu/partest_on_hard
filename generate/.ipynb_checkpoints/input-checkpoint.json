@@ -1,0 +1,101 @@
+{
+    "hardware": {
+        "cpus": [
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            },
+            {
+                "cores": 8,
+                "threads": 16,
+                "frequency": "3.6 GHz",
+                "available": "True"
+            }
+        ],
+        "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+                "size": "24 GB",
+                "type": "GDDR6X"
+            },
+            "available": "True"
+        }
+    },
+    "resources": {
+        "cpu_memory": "20 GB",
+        "gpu_memory": "24 GB"
+    },
+    "tasks": [
+        {
+            "type": "array_sum",
+            "function_signatures": {
+                "CUDA": "int array_sum(const Array& arr); // 计算大数组的和",
+                "other": "int array_sum(const Array& arr); // 计算大数组的和"
+            },
+            "contexts": {
+                "CUDA": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<int>;",
+                "other": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<int>;"
+            }
+        },
+        {
+            "type": "matrix_multiply",
+            "function_signatures": {
+                "CUDA": "void matrix_multiply(const Matrix& A, int N, int M, Matrix& result);//N为行数 M为列数,计算矩阵A与其转置的乘法",
+                "other": "void matrix_multiply(const Matrix& A, Matrix& result);//计算矩阵A与其转置的乘法"
+            },
+            "contexts": {
+                "CUDA": "// CUDA 适合使用一维数组\nusing Matrix = std::vector<int>;",
+                "other": "// 通用二维向量矩阵表示\nusing Matrix = std::vector<std::vector<int>>;"
+            }
+        },
+        {
+            "type": "graph_bfs",
+            "function_signatures": {
+                "CUDA": "void bfs(const CUDAGraph& graph, int start,std::vector<int> & result); //start为起始节点,按照bfs顺序将结果保存到result中，将result的最终大小打印到终端",
+                "other": "void bfs(const Graph& graph, int start,std::vector<int> & result);//start为起始节点,按照bfs顺序将结果保存到result中，将最终大小打印到终端"
+            },
+            "contexts": {
+                "CUDA": "struct CUDAGraph {\n\tint numVertices;\n\tint numEdges;\n\tint* offset;    // 顶点邻接表偏移数组\n\tint* edges;     // 邻接顶点数据数组\n};//结构已在其他文件定义，不要在代码中输出",
+                "other": "struct Graph {\n\tint numVertices;\n\tint numEdges;\n\tint* offset;    // 顶点邻接表偏移数组\n\tint* edges;     // 邻接顶点数据数组\n};//结构已在其他文件定义，不要在代码中输出"
+            }
+        }
+    ]
+}
