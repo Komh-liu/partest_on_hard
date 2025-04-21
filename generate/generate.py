@@ -55,7 +55,7 @@ def generate_code(config_path):
         "Serial",
         "OpenMP",
         "MPI",
-        #"CUDA",
+        # "CUDA",
     ]
 
     for task in config["tasks"]:
@@ -134,9 +134,9 @@ def generate_code(config_path):
             print(f"Framework inferred from the code content: {framework}")
 
         print(f"Selected framework: {framework}")
-        print("*" * 50)
+        print("*" * 60)
         print(f"Code implementation:\n{code_content}")
-        print("*" * 50)
+        print("*" * 60)
 
         task_output = {
             "metadata": {

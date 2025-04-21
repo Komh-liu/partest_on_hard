@@ -25,34 +25,34 @@
         {
             "type": "array_sum",
             "function_signatures": {
-                "CUDA": "long long array_sum(const Array& arr); // 计算大数组的和",
-                "other": "long long array_sum(const Array& arr); // 计算大数组的和"
+                "CUDA": "long long array_sum(const Array& arr); // Calculate the sum of a large array",
+                "other": "long long array_sum(const Array& arr); // Calculate the sum of a large array"
             },
             "contexts": {
-                "CUDA": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<long long>;",
-                "other": "#include <vector>\n\n// 定义数组类型\nusing Array = std::vector<long long>;"
+                "CUDA": "#include <vector>\n\n// Define the array type\nusing Array = std::vector<long long>;",
+                "other": "#include <vector>\n\n// Define the array type\nusing Array = std::vector<long long>;"
             }
         },
         {
             "type": "matrix_multiply",
             "function_signatures": {
-                "CUDA": "void matrix_multiply(const Matrix& A, int N, int M, Matrix& result);//N为行数 M为列数,计算矩阵A与其转置的乘法",
-                "other": "void matrix_multiply(const Matrix& A, Matrix& result);//计算矩阵A与其转置的乘法"
+                "CUDA": "void matrix_multiply(const Matrix& A, int N, int M, Matrix& result); // N is the number of rows and M is the number of columns. Calculate the multiplication of matrix A and its transpose",
+                "other": "void matrix_multiply(const Matrix& A, Matrix& result); // Calculate the multiplication of matrix A and its transpose"
             },
             "contexts": {
-                "CUDA": "// CUDA 适合使用一维数组\nusing Matrix = std::vector<int>;",
-                "other": "// 通用二维向量矩阵表示\nusing Matrix = std::vector<std::vector<int>>;"
+                "CUDA": "// CUDA is suitable for using one-dimensional arrays\nusing Matrix = std::vector<int>;",
+                "other": "// General two-dimensional vector matrix representation\nusing Matrix = std::vector<std::vector<int>>;"
             }
         },
         {
             "type": "graph_bfs",
             "function_signatures": {
-                "CUDA": "void bfs(const CUDAGraph& graph, int start,std::vector<int> & result); //start为起始节点,按照bfs顺序将结果保存到result中，将result的最终大小打印到终端",
-                "other": "void bfs(const Graph& graph, int start,std::vector<int> & result);//start为起始节点,按照bfs顺序将结果保存到result中，将最终大小打印到终端"
+                "CUDA": "void bfs(const CUDAGraph& graph, int start, std::vector<int> & result); // start is the starting node. Save the results in BFS order to the result and print the final size of the result to the terminal",
+                "other": "void bfs(const Graph& graph, int start, std::vector<int> & result); // start is the starting node. Save the results in BFS order to the result and print the final size to the terminal"
             },
             "contexts": {
-                "CUDA": "struct CUDAGraph {\n\tint numVertices;\n\tint numEdges;\n\tint* offset;    // 顶点邻接表偏移数组\n\tint* edges;     // 邻接顶点数据数组\n};//结构已在其他文件定义，不要在代码中输出",
-                "other": "struct Graph {\n\tint numVertices;\n\tint numEdges;\n\tint* offset;    // 顶点邻接表偏移数组\n\tint* edges;     // 邻接顶点数据数组\n};//结构已在其他文件定义，不要在代码中输出"
+                "CUDA": "struct CUDAGraph {\n    int numVertices;\n    int numEdges;\n    int* offset;    // Vertex adjacency list offset array\n    int* edges;     // Adjacent vertex data array\n};// The structure is defined in other files. Do not output it in the code",
+                "other": "struct Graph {\n    int numVertices;\n    int numEdges;\n    int* offset;    // Vertex adjacency list offset array\n    int* edges;     // Adjacent vertex data array\n};// The structure is defined in other files. Do not output it in the code"
             }
         }
     ]
