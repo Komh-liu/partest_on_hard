@@ -23,7 +23,7 @@ def check_available_devices(hardware):
     return available_devices
 
 def extract_framework_from_code(code_content):
-    # 尝试从代码内容中推断框架
+    # Try to infer the framework from the code content
     if "#pragma omp" in code_content:
         return "OpenMP"
     elif "MPI_" in code_content:
@@ -45,9 +45,9 @@ def generate_code(config_path):
     available_devices_info = []
     for device in available_devices:
         if device["type"] == "CPU":
-            device_info = f"CPU（核心数: {device['cores']}, 线程数: {device['threads']}, 频率: {device['frequency']})"
+            device_info = f"CPU (Cores: {device['cores']}, Threads: {device['threads']}, Frequency: {device['frequency']})"
         else:
-            device_info = f"GPU（CUDA核心数: {device['cores']}, 显存: {device['memory'].get('size', 'N/A')})"
+            device_info = f"GPU (CUDA Cores: {device['cores']}, Memory: {device['memory'].get('size', 'N/A')})"
         available_devices_info.append(device_info)
     available_devices_info = ", ".join(available_devices_info)
 
@@ -59,14 +59,14 @@ def generate_code(config_path):
     ]
 
     for task in config["tasks"]:
-        system_prompt = f"""你是一个C++专家，需要根据以下配置生成优化的并行计算代码：
-        - 任务类型: {task['type']}
-        - 硬件配置: {available_devices_info}
-        - 可用框架: {', '.join(available_frameworks)}
-        请根据硬件信息和任务需求，从可选框架中选择最合适的一个来生成代码（必须选择一个），生成的代码尽可能利用所有硬件资源同时降低内存开销。如果选用Serial则禁止使用任何并行框架或者方法
+        system_prompt = f"""You are a C++ expert. Generate optimized parallel computing code based on the following configuration:
+        - Task type: {task['type']}
+        - Hardware configuration: {available_devices_info}
+        - Available frameworks: {', '.join(available_frameworks)}
+        Please select the most suitable framework from the available ones according to the hardware information and task requirements (you must choose one). The generated code should utilize all hardware resources as much as possible while reducing memory overhead. If you choose Serial, do not use any parallel frameworks or methods.
         """
 
-        user_prompt_content = f"根据任务生成优化的并行计算代码：\n\n"
+        user_prompt_content = f"Generate optimized parallel computing code according to the task:\n\n"
         for framework in available_frameworks:
             if framework == "CUDA":
                 function_signature = task["function_signatures"]["CUDA"]
@@ -74,7 +74,7 @@ def generate_code(config_path):
             else:
                 function_signature = task["function_signatures"]["other"]
                 context = task["contexts"]["other"]
-            user_prompt_content += f"如果选择 {framework} 框架：\n包含的头文件和结构体定义：\n{context}\n\n函数签名：\n{function_signature}\n\n"
+            user_prompt_content += f"If you choose the {framework} framework:\nIncluded header files and structure definitions:\n{context}\n\nFunction signature:\n{function_signature}\n\n"
 
         user_prompt = {
             "role": "user",
@@ -96,7 +96,7 @@ def generate_code(config_path):
             messages=[
                 {
                     "role": "system",
-                    "content": f"请严格按以下格式输出代码：\n1. 代码必须用\n```cpp\n开始 用\n```\n结束，中间不得包含除C++代码外其他内容\n2. 只输出所选框架对应的函数实现，不输出prompt给出的结构体定义\n3. 禁止输出任何解释性文字或注释\n4. 在代码前指定所选择的框架（例如：选择的框架：<框架名称>）\n5. 尽可能根据硬件条件减小资源消耗\n6.在给出最终结果之前检查代码逻辑性，优化内存占用并修改。检查输出格式是否符合要求"
+                    "content": f"Please output the code strictly in the following format:\n1. The code must start with\n```cpp\nand end with\n```\nThere should be no content other than C++ code in between.\n2. Only output the function implementation corresponding to the selected framework, do not output the structure definitions given in the prompt.\n3. Do not output any explanatory text or comments.\n4. Specify the selected framework before the code (e.g., Selected framework: <Framework name>).\n5. Try to reduce resource consumption according to the hardware conditions as much as possible.\n6. Check the logic of the code before giving the final result, optimize the memory usage and modify it. Check if the output format meets the requirements."
                 },
                 *messages
             ],
@@ -123,19 +123,19 @@ def generate_code(config_path):
                 code_lines.append(line)
 
         if not code_lines:
-            print("警告：未检测到代码内容，将跳过此任务")
+            print("Warning: No code content detected, this task will be skipped.")
             continue
 
         code_content = "\n".join(code_lines).strip()
 
-        # 如果未检测到框架信息，则尝试从代码内容中推断框架
+        # If the framework information is not detected, try to infer the framework from the code content
         if framework is None:
             framework = extract_framework_from_code(code_content)
-            print(f"根据代码内容推断的框架：{framework}")
+            print(f"Framework inferred from the code content: {framework}")
 
-        print(f"选择的框架：{framework}")
+        print(f"Selected framework: {framework}")
         print("*" * 50)
-        print(f"代码实现：\n{code_content}")
+        print(f"Code implementation:\n{code_content}")
         print("*" * 50)
 
         task_output = {
@@ -151,7 +151,7 @@ def generate_code(config_path):
     with open("output.json", "w") as f:
         json.dump(global_output, f, indent=2, ensure_ascii=False)
 
-    print("所有任务的代码生成完成，结果已保存到 output.json")
+    print("Code generation for all tasks is completed. The results have been saved to output.json.")
 
 if __name__ == "__main__":
     generate_code("input.json")
