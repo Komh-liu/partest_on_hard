@@ -54,7 +54,7 @@ def generate_code(config_path):
     available_frameworks = [
         "Serial",
         "OpenMP",
-        "MPI",
+        # "MPI",
         # "CUDA",
     ]
 

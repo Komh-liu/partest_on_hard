@@ -127,7 +127,7 @@ int main(int argc, char* argv[]) {
     if (graph.numVertices > 0) {
         int bfs_start_vertex = 1;
         std::cout << "BFS starting from vertex " << bfs_start_vertex << ":\n";
-        std::vector<int> bfs_result;
+        std::vector<int> bfs_result(graph.numVertices + 1, -1); // 初始化为 -1，表示未访问
         std::vector<int> result = loadFileToVector(result_file);
 
         auto time_start = std::chrono::high_resolution_clock::now();
