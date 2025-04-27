@@ -1,8 +1,8 @@
 CONFIG = {
     #"model": "qwen2.5-coder-3b-instruct",
-    # "model": "qwen-coder-plus",
+    "model": "qwen-coder-plus",
     # "model": "deepseek-r1",
-    "model": "deepseek-v3",
+    # "model": "deepseek-v3",
     "devices": {
         "cpu": {
             "type": "CPU",

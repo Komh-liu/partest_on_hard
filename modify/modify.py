@@ -1,7 +1,7 @@
 import json
+import os
 from openai import OpenAI
 from config import CONFIG
-import os
 
 def load_data_with_validation(original_path, modifications_path):
     """带校验的数据加载：确保任务数量和标识匹配"""
@@ -32,6 +32,7 @@ def generate_context_prompt(original_code, requirements, errors):
     修改需求：
     - 优化目标：{requirements}
     - 已知问题：{errors if errors else '无'}
+    - 保证代码正确性
     
     修改要求：
     1. 保持原有框架和核心逻辑
@@ -85,7 +86,7 @@ def process_single_task(client, orig_task, mod_task):
     return code
 
 def generate_modified_code(original_path, modifications_path):
-    """带严格校验的修改流程"""
+    """带严格校验的多轮修改流程"""
     original_data, modifications = load_data_with_validation(original_path, modifications_path)
     client = OpenAI(api_key=os.getenv('DASHSCOPE_API_KEY'),
                    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1")
@@ -93,23 +94,53 @@ def generate_modified_code(original_path, modifications_path):
     modified_output = {"tasks": []}
     for orig_task, mod_task in zip(original_data["tasks"], modifications["tasks"]):
         try:
-            new_code = process_single_task(client, orig_task, mod_task)
-            modified_task = {
-                "metadata": orig_task["metadata"].copy(),
-                "modification_record": {
-                    "requirements": mod_task["requirements"],
-                    "error_info": mod_task.get("errors", "")
+            # 初始化代码为原始代码
+            current_code = orig_task["metadata"]["code"]
+            round_count = 1
+            while True:
+                # 每轮修改基于当前代码
+                print(f"\n任务 {orig_task['metadata']['task_type']} - 第 {round_count} 轮修改")
+                print("当前代码：")
+                print(current_code)
+                
+                # 获取用户输入的修改要求
+                user_requirements = input("请输入新的修改要求（输入 'done' 结束此任务）：")
+                if user_requirements.lower() == 'done':
+                    break
+                
+                user_errors = input("请输入已知问题（可选，直接回车表示无）：")
+                
+                # 更新修改任务
+                mod_task["requirements"] = user_requirements
+                mod_task["errors"] = user_errors if user_errors else "无"
+                
+                # 处理单个任务
+                current_code = process_single_task(client, orig_task, mod_task)
+                
+                # 保存当前轮次的修改结果
+                modified_task = {
+                    "metadata": orig_task["metadata"].copy(),
+                    "modification_record": {
+                        "round": round_count,
+                        "requirements": mod_task["requirements"],
+                        "error_info": mod_task.get("errors", "")
+                    }
                 }
-            }
-            modified_task["metadata"]["code"] = new_code
-            modified_output["tasks"].append(modified_task)
+                modified_task["metadata"]["code"] = current_code
+                modified_output["tasks"].append(modified_task)
+                
+                # 保存到文件
+                with open("output_modified.json", "w") as f:
+                    json.dump(modified_output, f, indent=2, ensure_ascii=False)
+                
+                print(f"第 {round_count} 轮修改结果已保存到 output_modified.json")
+                round_count += 1
+            
         except Exception as e:
             print(f"处理任务 {orig_task['metadata']['task_type']} 失败: {str(e)}")
             modified_output["tasks"].append(orig_task)  # 保留原始代码
     
-    with open("output_modified.json", "w") as f:
-        json.dump(modified_output, f, indent=2, ensure_ascii=False)
-    print("代码修改完成，结果已保存到 output_modified.json")
+    print("\n所有任务的修改结果已保存到 output_modified.json")
 
 if __name__ == "__main__":
     generate_modified_code("output.json", "modifications.json")

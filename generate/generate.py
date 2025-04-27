@@ -64,6 +64,18 @@ def generate_code(config_path):
         - Hardware configuration: {available_devices_info}
         - Available frameworks: {', '.join(available_frameworks)}
         Please select the most suitable framework from the available ones according to the hardware information and task requirements (you must choose one). The generated code should utilize all hardware resources as much as possible while reducing memory overhead. If you choose Serial, do not use any parallel frameworks or methods.
+
+        **Optimization Goals**:
+        - Minimize memory usage.
+        - Maximize CPU/GPU utilization.
+        - Ensure thread safety and avoid race conditions.
+        """
+        
+        system_prompt += """
+        **Code Review and Correction**:
+        - Check the logic of the generated code for correctness.
+        - Ensure that the code adheres to best practices for the selected framework.
+        - Modify the code if necessary to improve performance and reduce resource consumption.
         """
 
         user_prompt_content = f"Generate optimized parallel computing code according to the task:\n\n"
@@ -76,6 +88,14 @@ def generate_code(config_path):
                 context = task["contexts"]["other"]
             user_prompt_content += f"If you choose the {framework} framework:\nIncluded header files and structure definitions:\n{context}\n\nFunction signature:\n{function_signature}\n\n"
 
+        user_prompt_content += """
+        **Optimization Instructions**:
+        - Use efficient data structures to minimize memory footprint.
+        - Ensure that the code is thread-safe and avoids race conditions.
+        - Optimize loop structures to reduce overhead.
+        - Use appropriate parallel constructs to maximize hardware utilization.
+        """
+        
         user_prompt = {
             "role": "user",
             "content": user_prompt_content
