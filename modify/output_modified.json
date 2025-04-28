@@ -2,6 +2,66 @@
   "tasks": [
     {
       "metadata": {
+        "task_type": "array_sum",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 20,
+              "threads": 16,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <vector>\n#include <omp.h>\n\nusing Array = std::vector<long long>;\n\nlong long array_sum(const Array& arr) {\n    long long sum = 0;\n    #pragma omp parallel for reduction(+:sum)\n    for (size_t i = 0; i < arr.size(); ++i) {\n        sum += arr[i];\n    }\n    return sum;\n}",
+        "framework": "OpenMP"
+      },
+      "modification_record": {
+        "round": 1,
+        "requirements": "None",
+        "error_info": "None"
+      }
+    },
+    {
+      "metadata": {
+        "task_type": "matrix_multiply",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 20,
+              "threads": 16,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <vector>\n#include <omp.h>\n\nusing Matrix = std::vector<std::vector<int>>;\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int n = A.size();\n    result.resize(n, std::vector<int>(n));\n\n    #pragma omp parallel for collapse(2)\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            int sum = 0;\n            for (int k = 0; k < n; ++k) {\n                sum += A[i][k] * A[j][k];\n            }\n            result[i][j] = sum;\n        }\n    }\n}",
+        "framework": "OpenMP"
+      },
+      "modification_record": {
+        "round": 1,
+        "requirements": "None",
+        "error_info": "None"
+      }
+    },
+    {
+      "metadata": {
         "task_type": "graph_bfs",
         "hardware": {
           "cpus": [
@@ -21,13 +81,73 @@
             "available": "True"
           }
         },
-        "code": "#include <omp.h>\n#include <vector>\n#include <queue>\n\nvoid bfs(const Graph& graph, int start, std::vector<int> & result) {\n    std::vector<bool> visited(graph.numVertices, false);\n    std::queue<int> q;\n    q.push(start);\n    visited[start] = true;\n    result[start] = 0;\n\n    while (!q.empty()) {\n        int current = q.front();\n        q.pop();\n\n        // MODIFIED: Set the number of threads to 64 for the parallel region\n        #pragma omp parallel for num_threads(64)\n        for (int i = graph.offset[current]; i < graph.offset[current + 1]; ++i) {\n            int neighbor = graph.edges[i];\n            if (!visited[neighbor]) {\n                #pragma omp critical\n                {\n                    if (!visited[neighbor]) { // Double-check within critical section\n                        visited[neighbor] = true;\n                        result[neighbor] = result[current] + 1;\n                        q.push(neighbor);\n                    }\n                }\n            }\n        }\n    }\n}",
+        "code": "#include <omp.h>\n#include <vector>\n#include <queue>\n\nvoid bfs(const Graph& graph, int start, std::vector<int> & result) {\n    std::vector<bool> visited(graph.numVertices, false);\n    std::queue<int> q;\n\n    q.push(start);\n    visited[start] = true;\n    result[start] = 0;\n\n    while (!q.empty()) {\n        int current = q.front();\n        q.pop();\n\n        // MODIFIED: Use thread private queue and vector to reduce contention\n        #pragma omp parallel\n        {\n            std::queue<int> localQueue;\n            std::vector<int> localVisited(graph.numVertices, false);\n\n            #pragma omp for nowait\n            for (int i = graph.offset[current]; i < graph.offset[current + 1]; ++i) {\n                int neighbor = graph.edges[i];\n                if (!visited[neighbor]) {\n                    localVisited[neighbor] = true;\n                    localQueue.push(neighbor);\n                }\n            }\n\n            // MODIFIED: Merge local results into global data structures\n            #pragma omp critical\n            {\n                while (!localQueue.empty()) {\n                    int neighbor = localQueue.front();\n                    localQueue.pop();\n                    if (!visited[neighbor]) { // Double-check inside critical section\n                        visited[neighbor] = true;\n                        result[neighbor] = result[current] + 1;\n                        q.push(neighbor);\n                    }\n                }\n            }\n        }\n    }\n}",
         "framework": "OpenMP"
       },
       "modification_record": {
         "round": 1,
-        "requirements": "降低时间开销 tread为64",
-        "error_info": "无"
+        "requirements": "减少临界区的使用：在原始代码中，#pragma omp critical 会导致线程之间竞争，严重影响性能。可以通过使用线程私有的队列来避免竞争。分批处理队列：将队列中的元素分批分配给线程，减少线程之间对队列的访问冲突。使用线程私有数据结构：为每个线程分配独立的队列和访问列表，减少全局数据的访问冲突。减少同步操作：尽量减少全局同步操作，例如使用 #pragma omp barrier 的次数。",
+        "error_info": "None"
+      }
+    },
+    {
+      "metadata": {
+        "task_type": "graph_bfs",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 20,
+              "threads": 16,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <omp.h>\n#include <vector>\n#include <queue>\n\nvoid bfs(const Graph& graph, int start, std::vector<int> & result) {\n    std::vector<bool> visited(graph.numVertices, false);\n    std::queue<int> q;\n\n    q.push(start);\n    visited[start] = true;\n    result[start] = 0;\n\n    while (!q.empty()) {\n        int current = q.front();\n        q.pop();\n\n        #pragma omp parallel for\n        for (int i = graph.offset[current]; i < graph.offset[current + 1]; ++i) {\n            int neighbor = graph.edges[i];\n            if (!visited[neighbor]) {\n                // MODIFIED: Use atomic capture to avoid critical section\n                bool was_visited = false;\n                #pragma omp atomic capture\n                was_visited = visited[neighbor];\n                if (!was_visited) {\n                    visited[neighbor] = true;\n                    result[neighbor] = result[current] + 1;\n                    // MODIFIED: Push to queue outside of parallel region\n                    #pragma omp critical\n                    q.push(neighbor);\n                }\n            }\n        }\n    }\n}",
+        "framework": "OpenMP"
+      },
+      "modification_record": {
+        "round": 2,
+        "requirements": "",
+        "error_info": "None"
+      }
+    },
+    {
+      "metadata": {
+        "task_type": "graph_bfs",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 20,
+              "threads": 16,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <omp.h>\n#include <vector>\n#include <queue>\n\nvoid bfs(const Graph& graph, int start, std::vector<int> & result) {\n    std::vector<bool> visited(graph.numVertices, false);\n    std::queue<int> q;\n\n    q.push(start);\n    visited[start] = true;\n    result[start] = 0;\n\n    while (!q.empty()) {\n        int current = q.front();\n        q.pop();\n\n        #pragma omp parallel for\n        for (int i = graph.offset[current]; i < graph.offset[current + 1]; ++i) {\n            int neighbor = graph.edges[i];\n            if (!visited[neighbor]) {\n                // MODIFIED: Use atomic capture to avoid multiple threads entering the critical section\n                bool was_visited = false;\n                #pragma omp atomic capture\n                {\n                    was_visited = visited[neighbor];\n                    visited[neighbor] = true;\n                }\n                if (!was_visited) {\n                    result[neighbor] = result[current] + 1;\n                    // MODIFIED: Protect the queue push operation with a critical section\n                    #pragma omp critical\n                    {\n                        q.push(neighbor);\n                    }\n                }\n            }\n        }\n    }\n}",
+        "framework": "OpenMP"
+      },
+      "modification_record": {
+        "round": 3,
+        "requirements": "",
+        "error_info": "done"
       }
     }
   ]

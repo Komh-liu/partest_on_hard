@@ -8,6 +8,7 @@ CONFIG = {
         "cpu": {
             "type": "CPU",
             "cores": 16,
+            "threads": 64,
             "memory": "32GB",
             "available": True,
         },
