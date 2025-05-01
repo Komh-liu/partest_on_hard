@@ -53,7 +53,7 @@ def generate_code(config_path):
 
     available_frameworks = [
         "Serial",
-        "OpenMP",
+        #"OpenMP",
         # "MPI",
         # "CUDA",
     ]
@@ -69,14 +69,14 @@ def generate_code(config_path):
         - Minimize memory usage.
         - Maximize CPU/GPU utilization.
         - Ensure thread safety and avoid race conditions.
-        """
-        
-        system_prompt += """
+        - **Consider parallel-friendly data structures**: Ensure that the chosen data structures can be efficiently utilized in a parallel environment to maximize performance. For example, use concurrent data structures or partition data to minimize contention and maximize parallelism.
+
         **Code Review and Correction**:
         - Check the logic of the generated code for correctness.
         - Ensure that the code adheres to best practices for the selected framework.
         - Modify the code if necessary to improve performance and reduce resource consumption.
         """
+        
 
         user_prompt_content = f"Generate optimized parallel computing code according to the task:\n\n"
         for framework in available_frameworks:
@@ -94,6 +94,7 @@ def generate_code(config_path):
         - Ensure that the code is thread-safe and avoids race conditions.
         - Optimize loop structures to reduce overhead.
         - Use appropriate parallel constructs to maximize hardware utilization.
+        - **Consider parallel-friendly data structures**: When selecting data structures, ensure they can be efficiently used in a parallel environment. For example, use concurrent data structures or partition data to minimize contention and maximize parallelism.
         """
         
         user_prompt = {

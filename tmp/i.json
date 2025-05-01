@@ -23,28 +23,6 @@
     },
     "tasks": [
         {
-            "type": "array_sum",
-            "function_signatures": {
-                "CUDA": "long long array_sum(const Array& arr); // Calculate the sum of a large array",
-                "other": "long long array_sum(const Array& arr); // Calculate the sum of a large array"
-            },
-            "contexts": {
-                "CUDA": "#include <vector>\n\n// Define the array type\nusing Array = std::vector<long long>;",
-                "other": "#include <vector>\n\n// Define the array type\nusing Array = std::vector<long long>;"
-            }
-        },
-        {
-            "type": "matrix_multiply",
-            "function_signatures": {
-                "CUDA": "void matrix_multiply(const Matrix& A, int N, int M, Matrix& result); // N is the number of rows and M is the number of columns. Calculate the multiplication of matrix A and its transpose",
-                "other": "void matrix_multiply(const Matrix& A, Matrix& result); // Calculate the multiplication of matrix A and its transpose"
-            },
-            "contexts": {
-                "CUDA": "// CUDA is suitable for using one-dimensional arrays\nusing Matrix = std::vector<int>;",
-                "other": "// General two-dimensional vector matrix representation\nusing Matrix = std::vector<std::vector<int>>;"
-            }
-        },
-        {
             "type": "graph_bfs",
             "function_signatures": {
                 "CUDA": "void bfs(const CUDAGraph& graph, int start, std::vector<int> & result); // start is the starting node. Save the results in BFS order to the result and print the final size of the result to the terminal",
