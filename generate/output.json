@@ -7,7 +7,7 @@
           "cpus": [
             {
               "cores": 20,
-              "threads": 16,
+              "threads": 32,
               "frequency": "3.6 GHz",
               "available": "True"
             }
@@ -21,7 +21,7 @@
             "available": "True"
           }
         },
-        "code": "#include <vector>\n#include <omp.h>\n\nusing Array = std::vector<long long>;\n\nlong long array_sum(const Array& arr) {\n    long long total = 0;\n    \n    #pragma omp parallel for reduction(+:total) schedule(static)\n    for (size_t i = 0; i < arr.size(); ++i) {\n        total += arr[i];\n    }\n    \n    return total;\n}",
+        "code": "#include <vector>\n#include <omp.h>\n\nusing Array = std::vector<long long>;\n\nlong long array_sum(const Array& arr) {\n    long long sum = 0;\n    #pragma omp parallel for reduction(+:sum) num_threads(20)\n    for (size_t i = 0; i < arr.size(); ++i) {\n        sum += arr[i];\n    }\n    return sum;\n}",
         "framework": "OpenMP"
       }
     },
@@ -32,7 +32,7 @@
           "cpus": [
             {
               "cores": 20,
-              "threads": 16,
+              "threads": 32,
               "frequency": "3.6 GHz",
               "available": "True"
             }
@@ -46,7 +46,7 @@
             "available": "True"
           }
         },
-        "code": "#include <omp.h>\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int rows = A.size();\n    int cols = A[0].size();\n\n    #pragma omp parallel for collapse(2) schedule(static)\n    for (int i = 0; i < rows; ++i) {\n        for (int j = 0; j < rows; ++j) {\n            long long sum = 0;\n            for (int k = 0; k < cols; ++k) {\n                sum += static_cast<long long>(A[i][k]) * A[j][k];\n            }\n            result[i][j] = static_cast<int>(sum);\n        }\n    }\n}",
+        "code": "#include <vector>\n#include <omp.h>\n\nusing Matrix = std::vector<std::vector<int>>;\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int rows = A.size();\n    int cols = A[0].size();\n\n    #pragma omp parallel for collapse(2) schedule(static) num_threads(20)\n    for (int i = 0; i < rows; ++i) {\n        for (int j = 0; j < rows; ++j) {\n            int sum = 0;\n            for (int k = 0; k < cols; ++k) {\n                sum += A[i][k] * A[j][k];\n            }\n            result[i][j] = sum;\n        }\n    }\n}",
         "framework": "OpenMP"
       }
     },
@@ -57,7 +57,7 @@
           "cpus": [
             {
               "cores": 20,
-              "threads": 16,
+              "threads": 32,
               "frequency": "3.6 GHz",
               "available": "True"
             }
@@ -71,7 +71,7 @@
             "available": "True"
           }
         },
-        "code": "#include <vector>\n#include <queue>\n#include <limits.h>\n#include <omp.h>\n\nvoid bfs(const Graph& graph, int start, std::vector<int> & result) {\n    const int numVertices = graph.numVertices;\n    result.assign(numVertices, -1);\n    \n    std::vector<int> frontier(1, start);\n    result[start] = 0;\n    \n    #pragma omp parallel\n    {\n        std::vector<int> local_frontier;\n        #pragma omp single\n        {\n            while (!frontier.empty()) {\n                #pragma omp for\n                for (int i = 0; i < frontier.size(); ++i) {\n                    int u = frontier[i];\n                    for (int j = graph.offset[u]; j < graph.offset[u + 1]; ++j) {\n                        int v = graph.edges[j];\n                        if (result[v] == -1) {\n                            // Only one thread can update a particular node\n                            #pragma omp atomic capture\n                            {\n                                if (result[v] == -1)\n                                    result[v] = result[u] + 1;\n                            }\n                            if (result[v] != -1)\n                                local_frontier.push_back(v);\n                        }\n                    }\n                }\n\n                frontier.swap(local_frontier);\n                local_frontier.clear();\n            }\n        }\n    }\n}",
+        "code": "#include <vector>\n#include <queue>\n#include <omp.h>\n\nvoid bfs(const Graph& graph, int start, std::vector<int> & result) {\n    const int numVertices = graph.numVertices;\n    const int* offset = graph.offset;\n    const int* edges = graph.edges;\n\n    std::vector<int> dist(numVertices, -1);\n    std::vector<bool> visited(numVertices, false);\n\n    #pragma omp parallel\n    {\n        std::queue<int> local_queue;\n        #pragma omp single\n        {\n            dist[start] = 0;\n            visited[start] = true;\n            local_queue.push(start);\n        }\n\n        while (!local_queue.empty()) {\n            std::queue<int> next_level_queue;\n            int level_size = local_queue.size();\n\n            #pragma omp for schedule(dynamic)\n            for (int i = 0; i < level_size; ++i) {\n                int u = local_queue.front();\n                local_queue.pop();\n\n                for (int j = offset[u]; j < offset[u + 1]; ++j) {\n                    int v = edges[j];\n                    if (!visited[v]) {\n                        visited[v] = true;\n                        dist[v] = dist[u] + 1;\n                    }\n                }\n            }\n\n            #pragma omp critical\n            {\n                while (!next_level_queue.empty()) {\n                    local_queue.push(next_level_queue.front());\n                    next_level_queue.pop();\n                }\n            }\n        }\n    }\n\n    result.swap(dist);\n}",
         "framework": "OpenMP"
       }
     }

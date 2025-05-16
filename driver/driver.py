@@ -3,6 +3,8 @@ import subprocess
 import os
 import tempfile
 import shutil
+import time
+import re  # 导入正则表达式模块
 
 def list_files_in_directory(directory):
     """列出指定目录中的所有文件和文件夹"""
@@ -21,7 +23,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         header_file_name = 'openmp_impl.h'
     elif framework == 'CUDA':
         header_file_name = 'cuda_impl.cu'
-    elif framework =='MPI':
+    elif framework == 'MPI':
         header_file_name = 'mpi_impl.h'
     else:
         # 这里可以根据需要添加更多框架的处理
@@ -106,24 +108,40 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         print("编译失败！")
         print("错误信息：")
         print(compile_result.stderr)
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 编译失败 - 运行时长: N/A\n "
+        with open('log.txt', 'a') as log_file:
+            log_file.write(log_content)
         return
+
     parent_path = os.path.dirname(current_dir)
     # 运行测试代码
     input_file = os.path.join(parent_path, 'dataset', task_type, 'data.txt')
     output_file = os.path.join(parent_path, 'driver', task_type, 'result.txt')
     run_command = f"./{os.path.basename(os.path.join(temp_dir, 'main'))} {input_file} {output_file}"
+    start_time = time.time()
     run_result = subprocess.run(run_command, shell=True, capture_output=True, text=True, cwd=temp_dir)
+    end_time = time.time()
+    runtime = (end_time - start_time) * 1000  # 转换为毫秒
 
     # 检查运行结果
     if run_result.returncode != 0:
         print("测试代码运行失败！")
         print("错误信息：")
         print(run_result.stderr)
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行失败 - 运行时长: {runtime:.2f}ms\n"
     else:
         print("测试代码运行成功！")
         print("输出结果：")
-        print(run_result.stderr)
         print(run_result.stdout)
+        # 提取运行时间和验证成功与否的信息
+        time_match = re.search(r"Time: (\d+)ms", run_result.stdout)
+        success_match = re.search(r"验证成功", run_result.stdout)
+        time_info = time_match.group(1) if time_match else "N/A"
+        success_info = "验证成功" if success_match else "验证失败"
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {task_type} - 运行成功 - 运行时间: {time_info}ms - {success_info}\n"
+
+    with open("log.txt", 'a') as log_file:
+        log_file.write(log_content)
 
     # 清理临时文件夹
     shutil.rmtree(temp_dir)

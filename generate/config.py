@@ -1,14 +1,14 @@
 CONFIG = {
-    #"model": "qwen2.5-coder-3b-instruct",
     #"model": "qwen-coder-plus",
-    #"model": "deepseek-r1-distill-llama-70b",
-    #"model": "llama-4-scout-17b-16e-instruct",
-    #"model": "deepseek-r1",
+    #"model": "qwen-coder-plus",
+    #"model": "qwen-coder-plus",
+    #"model": "qwen-coder-plus",
+    #"model": "qwen-coder-plus",
     "model":"qwen-plus-latest",# qwen3 
     "devices": {
         "cpu": {
             "type": "CPU",
-            "cores": 16,
+            "cores": 32,
             "threads": 64,
             "memory": "32GB",
             "available": True,

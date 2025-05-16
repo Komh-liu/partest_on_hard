@@ -3,7 +3,7 @@
         "cpus": [
             {
                 "cores": 20,
-                "threads": 16,
+                "threads": 32,
                 "frequency": "3.6 GHz",
                 "available": "True"
             }
