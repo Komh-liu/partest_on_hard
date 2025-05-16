@@ -1,1 +1,1 @@
-*.txt
+/dataset/**/*.txt

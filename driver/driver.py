@@ -108,7 +108,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         print("编译失败！")
         print("错误信息：")
         print(compile_result.stderr)
-        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 编译失败 - 运行时长: N/A\n "
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 编译失败 - 运行时长: N/A\n"
         with open('log.txt', 'a') as log_file:
             log_file.write(log_content)
         return
@@ -119,7 +119,16 @@ def extract_and_compile(metadata, current_dir, temp_dir):
     output_file = os.path.join(parent_path, 'driver', task_type, 'result.txt')
     run_command = f"./{os.path.basename(os.path.join(temp_dir, 'main'))} {input_file} {output_file}"
     start_time = time.time()
-    run_result = subprocess.run(run_command, shell=True, capture_output=True, text=True, cwd=temp_dir)
+    try:
+        run_result = subprocess.run(run_command, shell=True, capture_output=True, text=True, cwd=temp_dir, timeout=300)  # 设置超时时间为300秒（5分钟）
+    except subprocess.TimeoutExpired:
+        print("测试代码运行超时！")
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行超时 - 运行时长: {int((time.time() - start_time) * 1000)}ms\n"
+        with open("log.txt", 'a') as log_file:
+            log_file.write(log_content)
+        shutil.rmtree(temp_dir)
+        return
+
     end_time = time.time()
     runtime = (end_time - start_time) * 1000  # 转换为毫秒
 
@@ -138,7 +147,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         success_match = re.search(r"验证成功", run_result.stdout)
         time_info = time_match.group(1) if time_match else "N/A"
         success_info = "验证成功" if success_match else "验证失败"
-        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {task_type} - 运行成功 - 运行时间: {time_info}ms - {success_info}\n"
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行成功 - 运行时间: {time_info}ms - {success_info}\n"
 
     with open("log.txt", 'a') as log_file:
         log_file.write(log_content)

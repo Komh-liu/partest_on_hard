@@ -1,10 +1,5 @@
 CONFIG = {
-    #"model": "qwen-coder-plus",
-    #"model": "qwen-coder-plus",
-    #"model": "qwen-coder-plus",
-    #"model": "qwen-coder-plus",
-    #"model": "qwen-coder-plus",
-    "model":"qwen-plus-latest",# qwen3 
+    "model": "qwen-coder-plus",# qwen3 
     "devices": {
         "cpu": {
             "type": "CPU",
@@ -20,6 +15,5 @@ CONFIG = {
             "threads_per_block": 1024,
             "available": True,
         },
-        "time":"652ms ",
     }
 }

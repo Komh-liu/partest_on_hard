@@ -1,0 +1,220 @@
+2025-05-16 10:25:25 - array_sum - 运行成功 - 运行时间: 669ms - 验证成功
+2025-05-16 10:25:32 - matrix_multiply - 运行成功 - 运行时间: 4760ms - 验证成功
+2025-05-16 10:26:49 - array_sum - 运行成功 - 运行时间: 621ms - 验证成功
+2025-05-16 10:26:55 - matrix_multiply - 运行成功 - 运行时间: 4894ms - 验证成功
+2025-05-16 10:26:56 - graph_bfs - 编译失败 - 运行时长: N/A
+Model updated to qwen-coder-plus at Fri May 16 10:36:24 CST 2025
+2025-05-16 10:37:07 - array_sum - 运行成功 - 运行时间: 669ms - 验证成功
+2025-05-16 10:37:13 - matrix_multiply - 运行成功 - 运行时间: 4960ms - 验证成功
+Model updated to qwen-coder-plus at Fri May 16 10:43:47 CST 2025
+2025-05-16 10:44:42 - array_sum - 运行成功 - 运行时间: 666ms - 验证成功
+2025-05-16 10:44:48 - matrix_multiply - 运行成功 - 运行时间: 4786ms - 验证成功
+2025-05-16 10:44:49 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ Model updated to qwen2.5-coder-3b-instruct at Fri May 16 10:44:49 CST 2025
+2025-05-16 10:45:26 - array_sum - 运行成功 - 运行时间: 642ms - 验证成功
+2025-05-16 10:45:30 - matrix_multiply - 运行成功 - 运行时间: 3245ms - 验证成功
+2025-05-16 10:47:08 - graph_bfs - 运行成功 - 运行时间: 1236ms - 验证失败
+Model updated to deepseek-r1 at Fri May 16 10:47:08 CST 2025
+2025-05-16 10:47:48 - array_sum - 运行成功 - 运行时间: 645ms - 验证成功
+2025-05-16 10:47:54 - matrix_multiply - 运行成功 - 运行时间: 4928ms - 验证成功
+2025-05-16 10:47:55 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to qwen-coder-plus at Fri May 16 10:50:21 CST 2025
+
+2025-05-16 10:51:11 - array_sum - 运行成功 - 运行时间: 675ms - 验证成功
+2025-05-16 10:51:18 - matrix_multiply - 运行成功 - 运行时间: 5012ms - 验证成功
+2025-05-16 10:51:19 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to qwen2.5-coder-3b-instruct at Fri May 16 10:51:19 CST 2025
+
+2025-05-16 10:52:04 - array_sum - 运行成功 - 运行时间: 689ms - 验证成功
+2025-05-16 10:52:10 - matrix_multiply - 运行成功 - 运行时间: 4906ms - 验证成功
+2025-05-16 10:52:12 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to deepseek-r1 at Fri May 16 10:52:12 CST 2025
+
+2025-05-16 10:52:57 - array_sum - 运行成功 - 运行时间: 651ms - 验证成功
+2025-05-16 10:53:02 - matrix_multiply - 运行成功 - 运行时间: 3890ms - 验证成功
+2025-05-16 10:53:03 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to qwen-coder-plus at Fri May 16 10:55:21 CST 2025
+
+2025-05-16 10:56:08 - array_sum - 运行成功 - 运行时间: 659ms - 验证成功
+2025-05-16 10:56:14 - matrix_multiply - 运行成功 - 运行时间: 4969ms - 验证成功
+2025-05-16 10:58:01 - graph_bfs - 运行成功 - 运行时间: 6360ms - 验证失败
+
+ Model updated to qwen2.5-coder-3b-instruct at Fri May 16 10:58:01 CST 2025
+
+2025-05-16 10:58:48 - array_sum - 运行成功 - 运行时间: 652ms - 验证成功
+2025-05-16 10:58:54 - matrix_multiply - 运行成功 - 运行时间: 4811ms - 验证成功
+2025-05-16 10:58:55 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to deepseek-r1 at Fri May 16 10:58:55 CST 2025
+
+2025-05-16 10:59:54 - array_sum - 运行成功 - 运行时间: 690ms - 验证成功
+2025-05-16 11:00:00 - matrix_multiply - 运行成功 - 运行时间: 4923ms - 验证成功
+2025-05-16 11:00:02 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to qwen-coder-plus at Fri May 16 11:04:03 CST 2025
+
+
+ Model updated to deepseek-r1 at Fri May 16 11:04:36 CST 2025
+
+
+ Model updated to qwen-coder-plus at Fri May 16 11:05:12 CST 2025
+
+
+ Model updated to deepseek-r1 at Fri May 16 11:05:27 CST 2025
+
+2025-05-16 11:06:09 - array_sum - 运行成功 - 运行时间: 665ms - 验证成功
+2025-05-16 11:06:15 - matrix_multiply - 运行成功 - 运行时间: 3702ms - 验证成功
+2025-05-16 11:06:16 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+ Model updated to qwen3-235b-a22b at Fri May 16 11:06:16 CST 2025
+
+
+ Model updated to deepseek-r1 at Fri May 16 11:06:26 CST 2025
+
+
+ Model updated to deepseek-r1 at Fri May 16 11:06:52 CST 2025
+
+Failed to update model value to deepseek-r1
+Failed to update model value to qwen3-235b-a22b
+Failed to update model value to deepseek-r1
+Failed to update model value to qwen3-235b-a22b
+Failed to update model value to deepseek-r1
+Failed to update model value to qwen3-235b-a22b
+
+Model updated to deepseek-r1 at 1747365208.605093
+2025-05-16 11:17:27 - array_sum - 运行成功 - 运行时间: 630ms - 验证成功
+2025-05-16 11:17:29 - matrix_multiply - 运行成功 - 运行时间: 911ms - 验证成功
+2025-05-16 11:17:30 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+Model updated to qwen3-235b-a22b at 1747365450.8027027
+2025-05-16 11:17:51 - array_sum - 运行成功 - 运行时间: 697ms - 验证成功
+2025-05-16 11:17:54 - matrix_multiply - 运行成功 - 运行时间: 909ms - 验证成功
+2025-05-16 11:17:55 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+ 
+## 以下为openmp
+
+Model updated to deepseek-r1 at 1747365523.6883202
+2025-05-16 11:22:54 - array_sum - 运行成功 - 运行时间: 670ms - 验证成功
+2025-05-16 11:22:57 - matrix_multiply - 运行成功 - 运行时间: 1742ms - 验证成功
+2025-05-16 11:24:37 - graph_bfs - 运行成功 - 运行时间: 1120ms - 验证成功
+
+Model updated to deepseek-v3 at 1747365877.3158653
+2025-05-16 11:25:48 - array_sum - 运行成功 - 运行时间: 671ms - 验证成功
+2025-05-16 11:25:54 - matrix_multiply - 运行成功 - 运行时间: 5267ms - 验证成功
+2025-05-16 11:27:41 - graph_bfs - 运行成功 - 运行时间: 8176ms - 验证成功
+
+Model updated to qwen3-235b-a22b at 1747366061.7851818 ##生成代码失败 api无法调用
+2025-05-16 11:28:04 - array_sum - 运行成功 - 运行时间: 665ms - 验证成功
+2025-05-16 11:28:10 - matrix_multiply - 运行成功 - 运行时间: 5235ms - 验证成功
+2025-05-16 11:29:59 - graph_bfs - 运行成功 - 运行时间: 8516ms - 验证成功
+
+Model updated to llama-4-scout-17b-16e-instruct at 1747366199.3293216
+2025-05-16 11:30:29 - array_sum - 运行成功 - 运行时间: 680ms - 验证成功
+2025-05-16 11:30:30 - OpenMP - matrix_multiply - 编译失败 - 运行时长: N/A
+ 
+Model updated to qwen-coder-plus at 1747366701.9762785
+2025-05-16 11:38:56 - OpenMP - array_sum - 运行成功 - 运行时间: 632ms - 验证成功
+2025-05-16 11:39:00 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 3271ms - 验证成功
+2025-05-16 11:42:06 - OpenMP - graph_bfs - 运行成功 - 运行时间: 86211ms - 验证失败
+
+Model updated to qwen2.5-coder-3b-instruct at 1747366926.7286727
+2025-05-16 11:42:49 - OpenMP - array_sum - 运行成功 - 运行时间: 675ms - 验证成功
+2025-05-16 11:42:49 - OpenMP - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-16 11:42:51 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+
+## 以下为serial
+Model updated to deepseek-r1 at 1747367085.3334858
+2025-05-16 11:47:57 - Serial - array_sum - 运行成功 - 运行时间: 737ms - 验证成功
+2025-05-16 11:48:31 - Serial - matrix_multiply - 运行成功 - 运行时间: 32792ms - 验证成功
+2025-05-16 11:50:13 - Serial - graph_bfs - 运行成功 - 运行时间: 2910ms - 验证成功
+
+Model updated to deepseek-v3 at 1747367413.8920617
+2025-05-16 11:51:21 - Serial - array_sum - 运行成功 - 运行时间: 943ms - 验证成功
+
+## 以下是一亿数组
+Model updated to deepseek-r1 at 1747367789.5278637
+2025-05-16 12:02:57 - Serial - array_sum - 运行成功 - 运行时间: 9512ms - 验证失败
+2025-05-16 12:03:31 - Serial - matrix_multiply - 运行成功 - 运行时间: 32250ms - 验证成功
+2025-05-16 12:05:12 - Serial - graph_bfs - 运行成功 - 运行时间: 2505ms - 验证成功
+
+Model updated to deepseek-v3 at 1747368312.90087
+2025-05-16 12:10:39 - Serial - array_sum - 运行成功 - 运行时间: 10685ms - 验证失败
+2025-05-16 12:12:28 - Serial - matrix_multiply - 运行成功 - 运行时间: 107367ms - 验证成功
+2025-05-16 12:14:09 - Serial - graph_bfs - 运行成功 - 运行时间: 2777ms - 验证成功
+
+Model updated to qwen3-235b-a22b at 1747368849.815345
+2025-05-16 12:17:45 - Serial - array_sum - 运行成功 - 运行时间: 10706ms - 验证失败
+2025-05-16 12:19:33 - Serial - matrix_multiply - 运行成功 - 运行时间: 106681ms - 验证成功
+2025-05-16 12:21:13 - Serial - graph_bfs - 运行成功 - 运行时间: 2872ms - 验证成功
+
+Model updated to llama-4-scout-17b-16e-instruct at 1747369273.8257535
+2025-05-16 12:25:04 - Serial - array_sum - 运行成功 - 运行时间: 12011ms - 验证失败
+2025-05-16 12:27:02 - Serial - matrix_multiply - 运行成功 - 运行时间: 117553ms - 验证成功
+2025-05-16 12:28:44 - Serial - graph_bfs - 运行成功 - 运行时间: 4224ms - 验证失败
+
+Model updated to qwen-coder-plus at 1747369725.071238
+2025-05-16 12:28:56 - Serial - array_sum - 编译失败 - 运行时长: N/A
+2025-05-16 12:29:04 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 5910ms - 验证成功
+2025-05-16 12:30:47 - Serial - graph_bfs - 运行成功 - 运行时间: 4216ms - 验证失败
+
+Model updated to qwen2.5-coder-3b-instruct at 1747369847.2816634
+2025-05-16 12:35:13 - Serial - array_sum - 运行成功 - 运行时间: 10213ms - 验证失败
+2025-05-16 12:35:14 - Serial - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-16 12:35:17 - Serial - graph_bfs - 编译失败 - 运行时长: N/A
+
+## 上面的没有修改结果
+
+Model updated to deepseek-r1 at 1747375725.8350875
+2025-05-16 14:18:05 - OpenMP - array_sum - 运行超时 - 运行时长: 300103ms
+2025-05-16 14:18:09 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 2262ms - 验证成功
+2025-05-16 14:18:10 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to deepseek-v3 at 1747376290.6360006
+2025-05-16 14:22:05 - OpenMP - array_sum - 运行成功 - 运行时间: 6572ms - 验证成功
+2025-05-16 14:22:11 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 4909ms - 验证成功
+2025-05-16 14:24:01 - OpenMP - graph_bfs - 运行成功 - 运行时间: 10361ms - 验证成功
+
+Model updated to qwen3-235b-a22b at 1747376641.7969146 没有调用成功
+2025-05-16 14:27:27 - OpenMP - array_sum - 运行成功 - 运行时间: 6539ms - 验证成功
+2025-05-16 14:27:33 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 4863ms - 验证成功
+2025-05-16 14:29:20 - OpenMP - graph_bfs - 运行成功 - 运行时间: 8913ms - 验证成功
+
+Model updated to llama-4-scout-17b-16e-instruct at 1747376960.5326958
+2025-05-16 14:33:01 - OpenMP - array_sum - 运行成功 - 运行时间: 6960ms - 验证成功
+2025-05-16 14:33:02 - OpenMP - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-16 14:38:03 - OpenMP - graph_bfs - 运行超时 - 运行时长: 300104ms
+
+Model updated to qwen-coder-plus at 1747377484.030836
+2025-05-16 14:41:49 - OpenMP - array_sum - 运行成功 - 运行时间: 6621ms - 验证成功
+2025-05-16 14:41:54 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 3683ms - 验证成功
+2025-05-16 14:44:17 - OpenMP - graph_bfs - 运行成功 - 运行时间: 44931ms - 验证失败
+
+Model updated to qwen2.5-coder-3b-instruct at 1747377857.8372335
+2025-05-16 14:48:09 - OpenMP - array_sum - 运行成功 - 运行时间: 6646ms - 验证成功
+2025-05-16 14:48:10 - OpenMP - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-16 14:48:11 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen-coder-plus at 1747378595.0538714
+2025-05-16 15:00:24 - OpenMP - array_sum - 运行成功 - 运行时间: 6672ms - 验证成功
+2025-05-16 15:00:28 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 3658ms - 验证成功
+2025-05-16 15:02:50 - OpenMP - graph_bfs - 运行成功 - 运行时间: 44133ms - 验证失败
+
+Model updated to  at 1747378970.832581
+
+Model updated to qwen-coder-plus at 1747379100.7198224
+
+Model updated to qwen-coder-plus at 1747379318.1845891
+2025-05-16 15:08:44 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 17ms - 验证失败
+
+Model updated to qwen-coder-plus at 1747379387.577978
+2025-05-16 15:09:53 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 10ms - 验证失败
+
+Model updated to qwen-coder-plus at 1747379443.8350666
+2025-05-16 15:10:50 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 19ms - 验证成功
+
+Model updated to qwen-coder-plus at 1747379481.1637723
+2025-05-16 15:11:31 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 3439ms - 验证成功

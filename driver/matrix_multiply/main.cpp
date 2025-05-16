@@ -175,13 +175,12 @@ int main(int argc, char* argv[]) {
     std::cout << "Time: " 
               << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
               << "ms\n";
-    save_matrix(result, output_file);
-
     // 生成包含时间戳的文件名
     std::string combined_file = generate_filename_with_timestamp(output_file);
+    save_matrix(result,combined_file);
 
     // 保存输入文件和输出文件的内容到新文件
-    save_combined_file(input_file, output_file, combined_file);
+    //save_combined_file(input_file, combined_file, combined_file);
 
     //std::cout << "Combined file saved as: " << combined_file << std::endl;
     bool c_result = compare_text_files(combined_file, output_file);

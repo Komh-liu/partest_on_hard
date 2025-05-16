@@ -18,10 +18,25 @@ fi
 # 读取models.txt文件中的每一行
 while read NEW_MODEL; do
     # 使用sed命令修改model值
-    sed -i "s/\"model\": \".*\"/\"model\": \"$NEW_MODEL\"/g" "$CONFIG_FILE"
+    sed -i "s/\"model\": \".*\"/\"model\": \"$NEW_MODEL\"/" "$CONFIG_FILE"
     
-    # 将新的model值追加到日志文件中
-    echo "Model updated to $NEW_MODEL at $(date)" >> "$LOG_FILE"
-    echo "Model value updated to $NEW_MODEL"
-    sh do.sh
+    # 检查是否修改成功
+    if grep -q "\"model\": \"$NEW_MODEL\"" "$CONFIG_FILE"; then
+        echo "\n Model updated to $NEW_MODEL at $(date)\n" >> "$LOG_FILE"
+        echo "Model value updated to $NEW_MODEL"
+    else
+        echo "Failed to update model value to $NEW_MODEL" >> "$LOG_FILE"
+        echo "Failed to update model value to $NEW_MODEL"
+        continue
+    fi
+
+    # 运行生成脚本
+    cd generate
+    python generate.py
+    cp output.json ../driver/output.json
+    cd ..
+    cd driver
+    python driver.py
+    cd ..
 done < "$MODELS_FILE"
+rm -rf /tmp/tmp*
