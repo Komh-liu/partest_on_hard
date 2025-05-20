@@ -2,11 +2,11 @@
   "tasks": [
     {
       "metadata": {
-        "task_type": "matrix_multiply",
+        "task_type": "array_sum",
         "hardware": {
           "cpus": [
             {
-              "cores": 20,
+              "cores": 12,
               "threads": 32,
               "frequency": "3.6 GHz",
               "available": "True"
@@ -21,7 +21,57 @@
             "available": "True"
           }
         },
-        "code": "#include <vector>\n#include <omp.h>\n\nusing Matrix = std::vector<std::vector<int>>;\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int n = A.size();\n    result.resize(n, std::vector<int>(n, 0));\n\n    #pragma omp parallel for collapse(2)\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            int sum = 0;\n            for (int k = 0; k < n; ++k) {\n                sum += A[i][k] * A[j][k];\n            }\n            result[i][j] = sum;\n        }\n    }\n}",
+        "code": "#include <vector>\n#include <omp.h>\n\nusing Array = std::vector<long long>;\n\nlong long array_sum(const Array& arr) {\n    long long sum = 0;\n    #pragma omp parallel for reduction(+:sum) schedule(static)\n    for (size_t i = 0; i < arr.size(); ++i) {\n        sum += arr[i];\n    }\n    return sum;\n}",
+        "framework": "OpenMP"
+      }
+    },
+    {
+      "metadata": {
+        "task_type": "matrix_multiply",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 12,
+              "threads": 32,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <vector>\n#include <omp.h>\n\nusing Matrix = std::vector<std::vector<int>>;\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int n = A.size();\n    if (n == 0) return;\n    int m = A[0].size();\n    \n    result.resize(n);\n    for (auto& row : result) row.resize(n);\n    \n    #pragma omp parallel for schedule(dynamic)\n    for (int i = 0; i < n; ++i) {\n        const auto& row_i = A[i];\n        for (int j = 0; j <= i; ++j) {\n            const auto& row_j = A[j];\n            int sum = 0;\n            for (int k = 0; k < m; ++k) {\n                sum += row_i[k] * row_j[k];\n            }\n            result[i][j] = sum;\n            if (i != j) result[j][i] = sum;\n        }\n    }\n}",
+        "framework": "OpenMP"
+      }
+    },
+    {
+      "metadata": {
+        "task_type": "graph_bfs",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 12,
+              "threads": 32,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <vector>\n#include <atomic>\n#include <omp.h>\n\nvoid bfs(const Graph& graph, int start, std::vector<int>& result) {\n    result.assign(graph.numVertices, -1);\n    result[start] = 0;\n    \n    std::vector<int> current;\n    current.reserve(graph.numVertices);\n    current.push_back(start);\n    \n    while (!current.empty()) {\n        std::vector<int> next;\n        std::atomic<int> next_size(0);\n        next.resize(current.size() * graph.numEdges / graph.numVertices + 1024);\n        \n        #pragma omp parallel for schedule(dynamic, 64)\n        for (size_t i = 0; i < current.size(); ++i) {\n            int u = current[i];\n            int current_dist = result[u];\n            \n            for (int j = graph.offset[u]; j < graph.offset[u + 1]; ++j) {\n                int v = graph.edges[j];\n                int expected = -1;\n                if (std::atomic_compare_exchange_strong(&result[v], &expected, current_dist + 1)) {\n                    int idx = next_size.fetch_add(1, std::memory_order_relaxed);\n                    if (idx < static_cast<int>(next.size())) {\n                        next[idx] = v;\n                    } else {\n                        #pragma omp critical\n                        next.push_back(v);\n                    }\n                }\n            }\n        }\n        \n        if (next_size > static_cast<int>(next.size())) {\n            next.resize(next_size);\n        } else {\n            next.resize(next_size);\n        }\n        current.swap(next);\n    }\n}",
         "framework": "OpenMP"
       }
     }

@@ -1,9 +1,9 @@
 CONFIG = {
-    "model": "qwen-coder-plus",# qwen3 
+    "model": "deepseek-r1",# qwen3 
     "devices": {
         "cpu": {
             "type": "CPU",
-            "cores": 32,
+            "cores": 12,
             "threads": 64,
             "memory": "32GB",
             "available": True,

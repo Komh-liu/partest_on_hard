@@ -1,0 +1,132 @@
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250517_163731.txt - 运行失败 - 运行时长: 40.85ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_1_1.txt - 运行失败 - 运行时长: 8.38ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_1_2.txt - 运行失败 - 运行时长: 8.12ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_1_3.txt - 运行失败 - 运行时长: 7.07ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_1_4.txt - 运行失败 - 运行时长: 6.82ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_2_1.txt - 运行失败 - 运行时长: 42.81ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_2_2.txt - 运行失败 - 运行时长: 44.34ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_2_3.txt - 运行失败 - 运行时长: 42.30ms
+2025-05-20 11:53:23 - OpenMP - array_sum - array_sum_20250520_100554_array_2_4.txt - 运行失败 - 运行时长: 45.43ms
+2025-05-20 11:53:24 - OpenMP - array_sum - array_sum_20250520_100554_array_3_1.txt - 运行失败 - 运行时长: 388.68ms
+2025-05-20 11:53:24 - OpenMP - array_sum - array_sum_20250520_100554_array_3_2.txt - 运行失败 - 运行时长: 381.96ms
+2025-05-20 11:53:24 - OpenMP - array_sum - array_sum_20250520_100554_array_3_3.txt - 运行失败 - 运行时长: 358.69ms
+2025-05-20 11:53:25 - OpenMP - array_sum - array_sum_20250520_100554_array_3_4.txt - 运行失败 - 运行时长: 377.84ms
+2025-05-20 11:53:28 - OpenMP - array_sum - array_sum_20250520_100554_array_4_1.txt - 运行失败 - 运行时长: 3583.86ms
+2025-05-20 11:53:32 - OpenMP - array_sum - array_sum_20250520_100554_array_4_2.txt - 运行失败 - 运行时长: 3837.99ms
+2025-05-20 11:53:36 - OpenMP - array_sum - array_sum_20250520_100554_array_4_3.txt - 运行失败 - 运行时长: 3891.48ms
+2025-05-20 11:53:40 - OpenMP - array_sum - array_sum_20250520_100554_array_4_4.txt - 运行失败 - 运行时长: 3682.66ms
+2025-05-20 11:53:43 - OpenMP - array_sum - data.txt - 运行失败 - 运行时长: 3510.11ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250517_163731.txt - 运行失败 - 运行时长: 43.87ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_1_1.txt - 运行失败 - 运行时长: 7.55ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_1_2.txt - 运行失败 - 运行时长: 8.35ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_1_3.txt - 运行失败 - 运行时长: 9.89ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_1_4.txt - 运行失败 - 运行时长: 10.20ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_2_1.txt - 运行失败 - 运行时长: 49.03ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_2_2.txt - 运行失败 - 运行时长: 47.19ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_2_3.txt - 运行失败 - 运行时长: 39.13ms
+2025-05-20 11:57:43 - OpenMP - array_sum - array_sum_20250520_100554_array_2_4.txt - 运行失败 - 运行时长: 44.36ms
+2025-05-20 11:57:44 - OpenMP - array_sum - array_sum_20250520_100554_array_3_1.txt - 运行失败 - 运行时长: 385.08ms
+2025-05-20 11:57:44 - OpenMP - array_sum - array_sum_20250520_100554_array_3_2.txt - 运行失败 - 运行时长: 386.89ms
+2025-05-20 11:57:45 - OpenMP - array_sum - array_sum_20250520_100554_array_3_3.txt - 运行失败 - 运行时长: 372.13ms
+2025-05-20 11:57:45 - OpenMP - array_sum - array_sum_20250520_100554_array_3_4.txt - 运行失败 - 运行时长: 386.96ms
+2025-05-20 11:57:49 - OpenMP - array_sum - array_sum_20250520_100554_array_4_1.txt - 运行失败 - 运行时长: 3820.32ms
+2025-05-20 11:57:53 - OpenMP - array_sum - array_sum_20250520_100554_array_4_2.txt - 运行失败 - 运行时长: 3963.92ms
+2025-05-20 11:57:57 - OpenMP - array_sum - array_sum_20250520_100554_array_4_3.txt - 运行失败 - 运行时长: 3808.44ms
+2025-05-20 11:58:00 - OpenMP - array_sum - array_sum_20250520_100554_array_4_4.txt - 运行失败 - 运行时长: 3713.97ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250517_163731.txt - 运行失败 - 运行时长: 46.35ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_1_1.txt - 运行失败 - 运行时长: 11.16ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_1_2.txt - 运行失败 - 运行时长: 11.35ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_1_3.txt - 运行失败 - 运行时长: 9.42ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_1_4.txt - 运行失败 - 运行时长: 10.09ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_2_1.txt - 运行失败 - 运行时长: 44.02ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_2_2.txt - 运行失败 - 运行时长: 43.85ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_2_3.txt - 运行失败 - 运行时长: 43.88ms
+2025-05-20 11:59:02 - OpenMP - array_sum - array_sum_20250520_100554_array_2_4.txt - 运行失败 - 运行时长: 49.02ms
+2025-05-20 11:59:03 - OpenMP - array_sum - array_sum_20250520_100554_array_3_1.txt - 运行失败 - 运行时长: 390.39ms
+2025-05-20 11:59:03 - OpenMP - array_sum - array_sum_20250520_100554_array_3_2.txt - 运行失败 - 运行时长: 400.01ms
+2025-05-20 11:59:04 - OpenMP - array_sum - array_sum_20250520_100554_array_3_3.txt - 运行失败 - 运行时长: 369.15ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250517_163731.txt - 运行失败 - 运行时长: 45.05ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_1_1.txt - 运行失败 - 运行时长: 9.17ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_1_2.txt - 运行失败 - 运行时长: 6.99ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_1_3.txt - 运行失败 - 运行时长: 6.98ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_1_4.txt - 运行失败 - 运行时长: 6.83ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_2_1.txt - 运行失败 - 运行时长: 42.75ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_2_2.txt - 运行失败 - 运行时长: 47.86ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_2_3.txt - 运行失败 - 运行时长: 43.75ms
+2025-05-20 13:01:20 - OpenMP - array_sum - array_sum_20250520_100554_array_2_4.txt - 运行失败 - 运行时长: 44.26ms
+2025-05-20 13:01:21 - OpenMP - array_sum - array_sum_20250520_100554_array_3_1.txt - 运行失败 - 运行时长: 382.02ms
+2025-05-20 13:01:21 - OpenMP - array_sum - array_sum_20250520_100554_array_3_2.txt - 运行失败 - 运行时长: 381.39ms
+2025-05-20 13:01:22 - OpenMP - array_sum - array_sum_20250520_100554_array_3_3.txt - 运行失败 - 运行时长: 359.41ms
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250517_163731.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_1_1.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_1_2.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_1_3.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_1_4.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_2_1.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_2_2.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_2_3.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:58 - OpenMP - array_sum - array_sum_20250520_100554_array_2_4.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:04:59 - OpenMP - array_sum - array_sum_20250520_100554_array_3_1.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:04:59 - OpenMP - array_sum - array_sum_20250520_100554_array_3_2.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:00 - OpenMP - array_sum - array_sum_20250520_100554_array_3_3.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:00 - OpenMP - array_sum - array_sum_20250520_100554_array_3_4.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250517_163731.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_1_1.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_1_2.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_1_3.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_1_4.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_2_1.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_2_2.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_2_3.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_2_4.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:04 - OpenMP - array_sum - array_sum_20250520_100554_array_3_1.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:05 - OpenMP - array_sum - array_sum_20250520_100554_array_3_2.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:05 - OpenMP - array_sum - array_sum_20250520_100554_array_3_3.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:06 - OpenMP - array_sum - array_sum_20250520_100554_array_3_4.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:09 - OpenMP - array_sum - array_sum_20250520_100554_array_4_1.txt - 运行成功 - 运行时间: 5ms - 验证失败
+2025-05-20 13:05:13 - OpenMP - array_sum - array_sum_20250520_100554_array_4_2.txt - 运行成功 - 运行时间: 5ms - 验证失败
+2025-05-20 13:05:17 - OpenMP - array_sum - array_sum_20250520_100554_array_4_3.txt - 运行成功 - 运行时间: 5ms - 验证失败
+2025-05-20 13:05:20 - OpenMP - array_sum - array_sum_20250520_100554_array_4_4.txt - 运行成功 - 运行时间: 6ms - 验证失败
+2025-05-20 13:05:24 - OpenMP - array_sum - data.txt - 运行成功 - 运行时间: 4ms - 验证失败
+2025-05-20 13:05:25 - OpenMP - matrix_multiply - data.txt - 运行成功 - 运行时间: 872ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250517_163732.txt - 运行成功 - 运行时间: 104ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_1_1.txt - 运行成功 - 运行时间: 3ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_1_2.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_1_3.txt - 运行成功 - 运行时间: 2ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_1_4.txt - 运行成功 - 运行时间: 2ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_2_1.txt - 运行成功 - 运行时间: 26ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_2_2.txt - 运行成功 - 运行时间: 25ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_2_3.txt - 运行成功 - 运行时间: 27ms - 验证失败
+2025-05-20 13:05:26 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_2_4.txt - 运行成功 - 运行时间: 24ms - 验证失败
+2025-05-20 13:05:27 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_3_1.txt - 运行成功 - 运行时间: 103ms - 验证失败
+2025-05-20 13:05:27 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_3_2.txt - 运行成功 - 运行时间: 121ms - 验证失败
+2025-05-20 13:05:27 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_3_3.txt - 运行成功 - 运行时间: 114ms - 验证失败
+2025-05-20 13:05:27 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_3_4.txt - 运行成功 - 运行时间: 104ms - 验证失败
+2025-05-20 13:05:28 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_4_1.txt - 运行成功 - 运行时间: 806ms - 验证失败
+2025-05-20 13:05:29 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_4_2.txt - 运行成功 - 运行时间: 869ms - 验证失败
+2025-05-20 13:05:30 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_4_3.txt - 运行成功 - 运行时间: 831ms - 验证失败
+2025-05-20 13:05:31 - OpenMP - matrix_multiply - matrix_multiply_20250520_100554_matrix_4_4.txt - 运行成功 - 运行时间: 904ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - data.txt - 运行成功 - 运行时间: 19ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250517_163915.txt - 运行成功 - 运行时间: 3ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_1_1.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_1_2.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_1_3.txt - 运行成功 - 运行时间: 3ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_1_4.txt - 运行成功 - 运行时间: 0ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_2_1.txt - 运行成功 - 运行时间: 2ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_2_2.txt - 运行成功 - 运行时间: 1ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_2_3.txt - 运行成功 - 运行时间: 2ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_2_4.txt - 运行成功 - 运行时间: 3ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_3_1.txt - 运行成功 - 运行时间: 7ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_3_2.txt - 运行成功 - 运行时间: 8ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_3_3.txt - 运行成功 - 运行时间: 10ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_3_4.txt - 运行成功 - 运行时间: 7ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_4_1.txt - 运行成功 - 运行时间: 17ms - 验证失败
+2025-05-20 13:05:32 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_4_2.txt - 运行成功 - 运行时间: 16ms - 验证失败
+2025-05-20 13:05:33 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_4_3.txt - 运行成功 - 运行时间: 23ms - 验证失败
+2025-05-20 13:05:33 - OpenMP - graph_bfs - graph_bfs_20250520_100554_graph_4_4.txt - 运行成功 - 运行时间: 19ms - 验证失败
+2025-05-20 13:24:45 - OpenMP - array_sum - 运行成功 - 运行时间: 4ms - 验证失败
+2025-05-20 13:24:46 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 208ms - 验证失败
+2025-05-20 13:24:47 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-20 13:31:14 - OpenMP - array_sum - 运行成功 - 运行时间: 370ms - 验证成功
+2025-05-20 13:31:17 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 1655ms - 验证成功
+2025-05-20 13:32:56 - OpenMP - graph_bfs - 运行成功 - 运行时间: 890ms - 验证成功

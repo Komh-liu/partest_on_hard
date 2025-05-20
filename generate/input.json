@@ -2,7 +2,7 @@
     "hardware": {
         "cpus": [
             {
-                "cores": 20,
+                "cores": 12,
                 "threads": 32,
                 "frequency": "3.6 GHz",
                 "available": "True"
