@@ -156,7 +156,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         
         # 手动创建输出文件，确保它存在
         try:
-            with open(output_file, 'w') as f:
+            with open(output_file, 'r') as f:
                 f.write('')
             print(f"成功预创建输出文件: {output_file}")
             # 为输出文件添加全部权限
