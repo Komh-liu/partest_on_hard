@@ -1,55 +1,6 @@
 {
   "tasks": [
-    {
-      "metadata": {
-        "task_type": "array_sum",
-        "hardware": {
-          "cpus": [
-            {
-              "cores": 12,
-              "threads": 32,
-              "frequency": "3.6 GHz",
-              "available": "True"
-            }
-          ],
-          "gpu": {
-            "cuda_cores": 10496,
-            "memory": {
-              "size": "24 GB",
-              "type": "GDDR6X"
-            },
-            "available": "True"
-          }
-        },
-        "code": "#include <vector>\n#include <omp.h>\n\nusing Array = std::vector<long long>;\n\nlong long array_sum(const Array& arr) {\n    long long sum = 0;\n    #pragma omp parallel for reduction(+:sum) schedule(static)\n    for (size_t i = 0; i < arr.size(); ++i) {\n        sum += arr[i];\n    }\n    return sum;\n}",
-        "framework": "OpenMP"
-      }
-    },
-    {
-      "metadata": {
-        "task_type": "matrix_multiply",
-        "hardware": {
-          "cpus": [
-            {
-              "cores": 12,
-              "threads": 32,
-              "frequency": "3.6 GHz",
-              "available": "True"
-            }
-          ],
-          "gpu": {
-            "cuda_cores": 10496,
-            "memory": {
-              "size": "24 GB",
-              "type": "GDDR6X"
-            },
-            "available": "True"
-          }
-        },
-        "code": "#include <vector>\n#include <omp.h>\n\nusing Matrix = std::vector<std::vector<int>>;\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int n = A.size();\n    if (n == 0) return;\n    int m = A[0].size();\n    \n    result.resize(n);\n    for (auto& row : result) row.resize(n);\n    \n    #pragma omp parallel for schedule(dynamic)\n    for (int i = 0; i < n; ++i) {\n        const auto& row_i = A[i];\n        for (int j = 0; j <= i; ++j) {\n            const auto& row_j = A[j];\n            int sum = 0;\n            for (int k = 0; k < m; ++k) {\n                sum += row_i[k] * row_j[k];\n            }\n            result[i][j] = sum;\n            if (i != j) result[j][i] = sum;\n        }\n    }\n}",
-        "framework": "OpenMP"
-      }
-    },
+
     {
       "metadata": {
         "task_type": "graph_bfs",

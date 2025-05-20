@@ -1,0 +1,15 @@
+{
+  "task_name": "matrix_multiply",
+  "hardware": {
+    "cpu_cores": 96,
+    "gpu_count": 1,
+    "cuda_cc": "89"
+  },
+  "metrics": {
+    "avg_cpu": "12.4%",
+    "max_cpu": "17.0%",
+    "max_mem": "60.28 GB",
+    "avg_gpu": "0.0%",
+    "max_gpu": "0.0%"
+  }
+}
