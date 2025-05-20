@@ -1,0 +1,11 @@
+{
+  "test_id": "20250520_100554_graph_2_1",
+  "task": "graph_bfs",
+  "vertices": 500,
+  "edges": 4941,
+  "graph_type": "random",
+  "edge_probability": 0.02,
+  "start_vertex": 1,
+  "max_distance": 4,
+  "created_at": "2025-05-20 11:14:15"
+}

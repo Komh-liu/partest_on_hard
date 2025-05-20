@@ -1,0 +1,14 @@
+{
+  "test_id": "20250520_100554_matrix_1_4",
+  "task": "matrix_multiply",
+  "size": 100,
+  "matrix_type": "banded",
+  "density": 0.1,
+  "value_range": [
+    -10,
+    10
+  ],
+  "nonzero_count": 1339,
+  "result_nonzero_count": 3456,
+  "created_at": "2025-05-20 10:07:53"
+}

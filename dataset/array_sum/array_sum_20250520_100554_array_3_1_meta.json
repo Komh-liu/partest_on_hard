@@ -1,0 +1,12 @@
+{
+  "test_id": "20250520_100554_array_3_1",
+  "task": "array_sum",
+  "size": 1000000,
+  "data_type": "random",
+  "value_range": [
+    -1000000,
+    1000000
+  ],
+  "expected_sum": -470443445,
+  "created_at": "2025-05-20 10:05:57"
+}

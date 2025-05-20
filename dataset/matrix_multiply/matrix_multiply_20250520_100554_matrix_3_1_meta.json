@@ -1,0 +1,14 @@
+{
+  "test_id": "20250520_100554_matrix_3_1",
+  "task": "matrix_multiply",
+  "size": 500,
+  "matrix_type": "random",
+  "density": 0.02,
+  "value_range": [
+    -10,
+    10
+  ],
+  "nonzero_count": 4708,
+  "result_nonzero_count": 41068,
+  "created_at": "2025-05-20 10:11:17"
+}
