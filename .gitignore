@@ -1,2 +1,4 @@
 /dataset/**/*.txt
 /dataset-old/**/*.txt
+/dataset/
+/dataset-old/
