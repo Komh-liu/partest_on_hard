@@ -1,0 +1,5 @@
+# requirements.txt
+psutil>=5.8.0
+pynvml>=11.4.1
+numpy>=1.21.0
+matplotlib>=3.5.0

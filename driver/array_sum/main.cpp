@@ -63,12 +63,23 @@ int main(int argc, char* argv[]) {
     std::vector<long long> arr = load_array_from_file(data_file_path);
     long long result = load_result_from_file(result_file_path);
 
-    // 调用统一接口函数
-    auto start = std::chrono::high_resolution_clock::now();
+    // 记录BFS开始时间戳并写入标准输出
+    auto time_start = std::chrono::high_resolution_clock::now();
+    auto start_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        time_start.time_since_epoch()
+    ).count();
+    std::cout << "[METRICS] BFS_TIME_START=" << start_ms << std::endl << std::flush;
+
+    // 执行BFS算法
     long long sum = array_sum(arr);
     std::cout << "数组的和是: " << sum << std::endl; // 统一函数调用
-    auto end = std::chrono::high_resolution_clock::now();
 
+    // 记录BFS结束时间戳并写入标准输出
+    auto time_end = std::chrono::high_resolution_clock::now();
+    auto end_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        time_end.time_since_epoch()
+    ).count();
+    std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
     // 输出耗时和验证结果
     std::cout << "Time: " 
               << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()

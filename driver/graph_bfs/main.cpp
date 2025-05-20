@@ -130,9 +130,22 @@ int main(int argc, char* argv[]) {
         std::vector<int> bfs_result(graph.numVertices + 1, -1); // 初始化为 -1，表示未访问
         std::vector<int> result = loadFileToVector(result_file);
 
+        // 记录BFS开始时间戳并写入标准输出
         auto time_start = std::chrono::high_resolution_clock::now();
+        auto start_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+            time_start.time_since_epoch()
+        ).count();
+        std::cout << "[METRICS] BFS_TIME_START=" << start_ms << std::endl << std::flush;
+
+        // 执行BFS算法
         bfs(graph, bfs_start_vertex, bfs_result);
+
+        // 记录BFS结束时间戳并写入标准输出
         auto time_end = std::chrono::high_resolution_clock::now();
+        auto end_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+            time_end.time_since_epoch()
+        ).count();
+        std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
 
         // 生成带时间戳的文件名
         std::string timestamped_result_file = generateTimestampedFilename(

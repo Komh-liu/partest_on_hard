@@ -143,6 +143,23 @@ def extract_and_compile(metadata, current_dir, temp_dir):
 
     try:
         run_result = subprocess.run(run_command, shell=True, capture_output=True, text=True, cwd=temp_dir, timeout=300)  # 设置超时时间为300秒（5分钟）
+        output = run_result.stdout
+        
+        # 提取BFS核心代码执行时间戳
+        phase_times = None
+        start_match = re.search(r'\[METRICS\] BFS_TIME_START=(\d+)', output)
+        end_match = re.search(r'\[METRICS\] BFS_TIME_END=(\d+)', output)
+        
+        if start_match and end_match:
+            # 提取并转换为秒级时间戳
+            phase_times = {
+                "bfs_start": int(start_match.group(1)) / 1000.0,
+                "bfs_end": int(end_match.group(1)) / 1000.0
+            }
+            print(f"核心代码时间窗口: {phase_times['bfs_start']} - {phase_times['bfs_end']} (持续时间: {(phase_times['bfs_end']-phase_times['bfs_start'])*1000:.1f}ms)")
+        else:
+            print("未检测到BFS时间戳标记，将使用完整运行时间分析")
+            
     except subprocess.TimeoutExpired:
         print("测试代码运行超时！")
         log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行超时 - 运行时长: {int((time.time() - start_time) * 1000)}ms"
@@ -157,7 +174,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
 
     # 停止监控并生成报告
     monitor.stop_monitoring()
-    report = monitor.generate_report(task_type)
+    report = monitor.generate_report(task_type, phase_times)
 
     # 检查运行结果
     if run_result.returncode != 0:
@@ -181,6 +198,10 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         # 追加监控数据
         for key, value in report['metrics'].items():
             log_file.write(f'  {key}: {value}\n')
+        
+        # 如果存在BFS时间窗口信息，也记录下来
+        if 'time_window' in report and report['time_window']:
+            log_file.write(f"  核心代码执行时段: {report['time_window']['duration_ms']}ms\n")
 
     # 生成可视化报告
     generate_detailed_report(report, task_type, monitor)
@@ -193,8 +214,17 @@ def generate_detailed_report(report: dict, task_name: str, monitor: HardwareMoni
     if monitor.metrics_log:
         # 可视化 CPU 使用率曲线
         plt.figure(figsize=(10, 5))
-        plt.plot([m['cpu_usage'] for m in monitor.metrics_log], label='CPU Usage (%)')
-        plt.xlabel("Time (samples)")
+        timestamps = [m['timestamp'] - monitor.metrics_log[0]['timestamp'] for m in monitor.metrics_log]
+        plt.plot(timestamps, [m['cpu_usage'] for m in monitor.metrics_log], label='CPU Usage (%)')
+        
+        # 如果有BFS时间窗口，在图表中标记
+        if 'time_window' in report and report['time_window']:
+            start_rel = report['time_window']['start'] - monitor.metrics_log[0]['timestamp']
+            end_rel = report['time_window']['end'] - monitor.metrics_log[0]['timestamp']
+            plt.axvline(x=start_rel, color='r', linestyle='--', label='BFS Start')
+            plt.axvline(x=end_rel, color='g', linestyle='--', label='BFS End')
+            
+        plt.xlabel("Time (seconds)")
         plt.ylabel("CPU Usage (%)")
         plt.title(f"CPU Utilization - {task_name}")
         plt.legend()
@@ -205,8 +235,15 @@ def generate_detailed_report(report: dict, task_name: str, monitor: HardwareMoni
         # 可视化 GPU 使用率曲线（如果有 GPU）
         if report['hardware']['gpu_count'] > 0:
             plt.figure(figsize=(10, 5))
-            plt.plot([u['gpu_usage'][0] for u in monitor.metrics_log if u['gpu_usage']], label='GPU Usage (%)', color='orange')
-            plt.xlabel("Time (samples)")
+            gpu_data = [u['gpu_usage'][0] if u['gpu_usage'] else 0 for u in monitor.metrics_log]
+            plt.plot(timestamps, gpu_data, label='GPU Usage (%)', color='orange')
+            
+            # 如果有BFS时间窗口，在图表中标记
+            if 'time_window' in report and report['time_window']:
+                plt.axvline(x=start_rel, color='r', linestyle='--', label='BFS Start')
+                plt.axvline(x=end_rel, color='g', linestyle='--', label='BFS End')
+                
+            plt.xlabel("Time (seconds)")
             plt.ylabel("GPU Usage (%)")
             plt.title(f"GPU Utilization - {task_name}")
             plt.legend()

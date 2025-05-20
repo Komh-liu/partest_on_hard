@@ -167,10 +167,23 @@ int main(int argc, char* argv[]) {
     for (auto& row : result) {
         std::fill(row.begin(), row.end(), 0);
     }
+    // 记录BFS开始时间戳并写入标准输出
+    auto time_start = std::chrono::high_resolution_clock::now();
+    auto start_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        time_start.time_since_epoch()
+    ).count();
+    std::cout << "[METRICS] BFS_TIME_START=" << start_ms << std::endl << std::flush;
 
-    auto start = std::chrono::high_resolution_clock::now();
+    // 执行BFS算法
     matrix_multiply(A, result); // 统一函数调用
-    auto end = std::chrono::high_resolution_clock::now();
+
+    // 记录BFS结束时间戳并写入标准输出
+    auto time_end = std::chrono::high_resolution_clock::now();
+    auto end_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        time_end.time_since_epoch()
+    ).count();
+    std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
+
     // 输出耗时和验证结果
     std::cout << "Time: " 
               << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()

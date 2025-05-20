@@ -1,1367 +1,1381 @@
 {
   "task_name": "graph_bfs",
+  "time_window": {
+    "start": 1747752962.142,
+    "end": 1747752963.165,
+    "duration_ms": 1023
+  },
   "hardware": {
     "cpu_cores": 96,
     "cpu_threads": 192,
     "gpu_count": 1,
-    "cuda_cc": "89",
-    "total_mem": "1007.5 GB"
+    "cuda_cc": "8.9",
+    "total_mem": "1081.8 GB"
   },
   "metrics": {
-    "avg_cpu": "7.8%",
-    "max_cpu": "13.0%",
+    "avg_cpu": "11.4%",
+    "max_cpu": "14.3%",
     "cpu_load_balance": [
       {
         "core_id": 0,
-        "avg_usage": "7.0%",
-        "std_usage": "23.8%",
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "100.0%"
       },
       {
         "core_id": 1,
-        "avg_usage": "79.7%",
-        "std_usage": "39.7%",
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "100.0%"
       },
       {
         "core_id": 2,
-        "avg_usage": "63.9%",
-        "std_usage": "46.8%",
+        "avg_usage": "75.8%",
+        "std_usage": "34.3%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "27.3%"
       },
       {
         "core_id": 3,
-        "avg_usage": "2.7%",
-        "std_usage": "10.1%",
+        "avg_usage": "80.0%",
+        "std_usage": "28.3%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "40.0%"
       },
       {
         "core_id": 4,
-        "avg_usage": "2.4%",
-        "std_usage": "9.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "30.0%",
+        "std_usage": "42.4%",
+        "max_usage": "90.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 5,
-        "avg_usage": "15.0%",
-        "std_usage": "32.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 6,
-        "avg_usage": "34.0%",
-        "std_usage": "46.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 7,
-        "avg_usage": "7.8%",
-        "std_usage": "23.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 8,
-        "avg_usage": "7.1%",
-        "std_usage": "13.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 9,
-        "avg_usage": "10.1%",
-        "std_usage": "22.8%",
+        "avg_usage": "70.0%",
+        "std_usage": "42.4%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "10.0%"
       },
       {
         "core_id": 10,
-        "avg_usage": "2.8%",
-        "std_usage": "8.1%",
-        "max_usage": "54.5%",
+        "avg_usage": "6.1%",
+        "std_usage": "8.6%",
+        "max_usage": "18.2%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 11,
-        "avg_usage": "38.2%",
-        "std_usage": "43.4%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 12,
-        "avg_usage": "2.1%",
-        "std_usage": "5.0%",
-        "max_usage": "27.3%",
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 13,
-        "avg_usage": "4.1%",
-        "std_usage": "9.2%",
+        "avg_usage": "70.0%",
+        "std_usage": "42.4%",
+        "max_usage": "100.0%",
+        "min_usage": "10.0%"
+      },
+      {
+        "core_id": 14,
+        "avg_usage": "70.0%",
+        "std_usage": "42.4%",
+        "max_usage": "100.0%",
+        "min_usage": "10.0%"
+      },
+      {
+        "core_id": 15,
+        "avg_usage": "18.2%",
+        "std_usage": "25.7%",
         "max_usage": "54.5%",
         "min_usage": "0.0%"
       },
       {
-        "core_id": 14,
-        "avg_usage": "2.3%",
-        "std_usage": "9.4%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 15,
-        "avg_usage": "8.1%",
-        "std_usage": "19.4%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
         "core_id": 16,
-        "avg_usage": "0.5%",
-        "std_usage": "2.2%",
-        "max_usage": "10.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 17,
-        "avg_usage": "4.4%",
-        "std_usage": "12.7%",
-        "max_usage": "90.9%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 18,
-        "avg_usage": "2.2%",
-        "std_usage": "9.4%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 19,
-        "avg_usage": "0.9%",
-        "std_usage": "2.7%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
         "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
+        "core_id": 18,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 19,
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
+        "max_usage": "100.0%",
+        "min_usage": "100.0%"
+      },
+      {
         "core_id": 20,
-        "avg_usage": "1.2%",
-        "std_usage": "3.9%",
-        "max_usage": "22.2%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 21,
-        "avg_usage": "2.2%",
-        "std_usage": "7.9%",
-        "max_usage": "50.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 22,
-        "avg_usage": "2.3%",
-        "std_usage": "6.1%",
-        "max_usage": "40.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 23,
-        "avg_usage": "3.6%",
-        "std_usage": "8.7%",
-        "max_usage": "58.3%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 24,
-        "avg_usage": "3.3%",
-        "std_usage": "8.6%",
-        "max_usage": "45.5%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 25,
-        "avg_usage": "9.8%",
-        "std_usage": "22.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 26,
-        "avg_usage": "26.0%",
-        "std_usage": "28.6%",
-        "max_usage": "100.0%",
+        "avg_usage": "11.1%",
+        "std_usage": "15.7%",
+        "max_usage": "33.3%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 27,
-        "avg_usage": "4.1%",
-        "std_usage": "10.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 28,
-        "avg_usage": "3.9%",
-        "std_usage": "10.0%",
-        "max_usage": "58.3%",
+        "avg_usage": "66.7%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 29,
-        "avg_usage": "1.3%",
-        "std_usage": "4.0%",
-        "max_usage": "25.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "70.0%",
+        "std_usage": "42.4%",
+        "max_usage": "100.0%",
+        "min_usage": "10.0%"
       },
       {
         "core_id": 30,
-        "avg_usage": "1.9%",
-        "std_usage": "9.1%",
+        "avg_usage": "70.0%",
+        "std_usage": "42.4%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "10.0%"
       },
       {
         "core_id": 31,
-        "avg_usage": "2.6%",
-        "std_usage": "11.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 32,
-        "avg_usage": "4.2%",
-        "std_usage": "9.6%",
-        "max_usage": "55.6%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 33,
-        "avg_usage": "9.9%",
-        "std_usage": "23.1%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.7%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 34,
-        "avg_usage": "3.2%",
-        "std_usage": "8.8%",
-        "max_usage": "50.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 35,
-        "avg_usage": "11.7%",
-        "std_usage": "30.8%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 36,
-        "avg_usage": "1.8%",
-        "std_usage": "5.6%",
-        "max_usage": "36.4%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 37,
-        "avg_usage": "2.4%",
-        "std_usage": "6.2%",
-        "max_usage": "72.7%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 38,
-        "avg_usage": "1.1%",
-        "std_usage": "3.6%",
-        "max_usage": "27.3%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 39,
-        "avg_usage": "2.0%",
-        "std_usage": "11.2%",
+        "avg_usage": "66.7%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
+        "core_id": 37,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 38,
+        "avg_usage": "20.2%",
+        "std_usage": "14.5%",
+        "max_usage": "33.3%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 39,
+        "avg_usage": "6.7%",
+        "std_usage": "9.4%",
+        "max_usage": "20.0%",
+        "min_usage": "0.0%"
+      },
+      {
         "core_id": 40,
-        "avg_usage": "2.5%",
-        "std_usage": "10.7%",
+        "avg_usage": "66.7%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 41,
-        "avg_usage": "2.1%",
-        "std_usage": "7.1%",
-        "max_usage": "90.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 42,
-        "avg_usage": "11.9%",
-        "std_usage": "30.9%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 43,
-        "avg_usage": "2.0%",
-        "std_usage": "8.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 44,
-        "avg_usage": "2.2%",
-        "std_usage": "8.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 45,
-        "avg_usage": "2.0%",
-        "std_usage": "6.2%",
-        "max_usage": "60.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 46,
-        "avg_usage": "3.8%",
-        "std_usage": "16.6%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 47,
-        "avg_usage": "8.8%",
-        "std_usage": "22.3%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 48,
-        "avg_usage": "8.1%",
-        "std_usage": "22.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 49,
-        "avg_usage": "5.0%",
-        "std_usage": "17.9%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 50,
-        "avg_usage": "40.0%",
-        "std_usage": "48.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 51,
-        "avg_usage": "1.4%",
-        "std_usage": "3.9%",
-        "max_usage": "25.0%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 52,
-        "avg_usage": "3.9%",
-        "std_usage": "12.6%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 53,
-        "avg_usage": "2.6%",
-        "std_usage": "6.8%",
-        "max_usage": "77.8%",
+        "avg_usage": "6.7%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 54,
-        "avg_usage": "2.8%",
-        "std_usage": "10.5%",
-        "max_usage": "100.0%",
+        "avg_usage": "18.1%",
+        "std_usage": "19.0%",
+        "max_usage": "44.4%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 55,
-        "avg_usage": "2.2%",
-        "std_usage": "9.7%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "29.7%",
+        "std_usage": "28.5%",
+        "max_usage": "70.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 56,
-        "avg_usage": "2.0%",
-        "std_usage": "5.0%",
-        "max_usage": "50.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
+        "max_usage": "100.0%",
+        "min_usage": "100.0%"
       },
       {
         "core_id": 57,
-        "avg_usage": "2.1%",
-        "std_usage": "7.3%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "12.1%",
+        "std_usage": "4.3%",
+        "max_usage": "18.2%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 58,
         "avg_usage": "3.0%",
-        "std_usage": "7.7%",
-        "max_usage": "90.9%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 59,
-        "avg_usage": "3.0%",
-        "std_usage": "12.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 60,
-        "avg_usage": "4.7%",
-        "std_usage": "12.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "8.6%",
+        "std_usage": "6.8%",
+        "max_usage": "16.7%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 61,
-        "avg_usage": "3.0%",
-        "std_usage": "8.9%",
-        "max_usage": "80.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 62,
-        "avg_usage": "2.9%",
-        "std_usage": "9.1%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 63,
-        "avg_usage": "3.4%",
-        "std_usage": "10.6%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 64,
-        "avg_usage": "3.4%",
-        "std_usage": "10.6%",
-        "max_usage": "90.0%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 65,
-        "avg_usage": "3.8%",
-        "std_usage": "12.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.1%",
+        "std_usage": "8.6%",
+        "max_usage": "18.2%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 66,
-        "avg_usage": "3.5%",
-        "std_usage": "11.6%",
+        "avg_usage": "39.4%",
+        "std_usage": "42.9%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "9.1%"
       },
       {
         "core_id": 67,
-        "avg_usage": "3.0%",
-        "std_usage": "12.3%",
-        "max_usage": "100.0%",
+        "avg_usage": "12.1%",
+        "std_usage": "8.6%",
+        "max_usage": "18.2%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 68,
-        "avg_usage": "3.3%",
-        "std_usage": "10.6%",
-        "max_usage": "100.0%",
+        "avg_usage": "9.4%",
+        "std_usage": "7.4%",
+        "max_usage": "18.2%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 69,
-        "avg_usage": "3.8%",
-        "std_usage": "13.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 70,
-        "avg_usage": "2.8%",
-        "std_usage": "7.7%",
-        "max_usage": "60.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
+        "max_usage": "100.0%",
+        "min_usage": "100.0%"
       },
       {
         "core_id": 71,
-        "avg_usage": "2.5%",
-        "std_usage": "7.4%",
-        "max_usage": "72.7%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.4%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 72,
-        "avg_usage": "2.6%",
-        "std_usage": "10.7%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.4%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 73,
-        "avg_usage": "2.4%",
-        "std_usage": "5.7%",
-        "max_usage": "45.5%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 74,
-        "avg_usage": "3.4%",
-        "std_usage": "9.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 75,
-        "avg_usage": "2.2%",
-        "std_usage": "5.8%",
-        "max_usage": "60.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 76,
-        "avg_usage": "2.5%",
-        "std_usage": "9.6%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 77,
-        "avg_usage": "3.7%",
-        "std_usage": "13.2%",
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "100.0%"
       },
       {
         "core_id": 78,
-        "avg_usage": "2.9%",
-        "std_usage": "9.2%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.7%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 79,
-        "avg_usage": "2.3%",
-        "std_usage": "6.7%",
-        "max_usage": "80.0%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 80,
-        "avg_usage": "1.8%",
-        "std_usage": "5.9%",
-        "max_usage": "70.0%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 81,
-        "avg_usage": "2.7%",
-        "std_usage": "8.5%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 82,
-        "avg_usage": "3.1%",
-        "std_usage": "7.7%",
-        "max_usage": "88.9%",
+        "avg_usage": "6.4%",
+        "std_usage": "4.5%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 83,
-        "avg_usage": "4.3%",
-        "std_usage": "12.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "30.3%",
+        "std_usage": "36.6%",
+        "max_usage": "81.8%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 84,
-        "avg_usage": "4.8%",
-        "std_usage": "14.4%",
+        "avg_usage": "96.7%",
+        "std_usage": "4.7%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "90.0%"
       },
       {
         "core_id": 85,
-        "avg_usage": "4.1%",
-        "std_usage": "12.4%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 86,
-        "avg_usage": "3.2%",
-        "std_usage": "9.6%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 87,
-        "avg_usage": "3.2%",
-        "std_usage": "9.7%",
-        "max_usage": "81.8%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 88,
-        "avg_usage": "3.8%",
-        "std_usage": "11.4%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.4%",
+        "std_usage": "4.5%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 89,
-        "avg_usage": "12.6%",
-        "std_usage": "30.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 90,
-        "avg_usage": "3.2%",
-        "std_usage": "9.1%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 91,
-        "avg_usage": "1.9%",
-        "std_usage": "6.6%",
-        "max_usage": "91.7%",
-        "min_usage": "0.0%"
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
+        "max_usage": "100.0%",
+        "min_usage": "100.0%"
       },
       {
         "core_id": 92,
-        "avg_usage": "2.4%",
-        "std_usage": "8.3%",
-        "max_usage": "90.9%",
+        "avg_usage": "6.4%",
+        "std_usage": "4.5%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 93,
-        "avg_usage": "1.8%",
-        "std_usage": "5.3%",
-        "max_usage": "60.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 94,
-        "avg_usage": "5.5%",
-        "std_usage": "18.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 95,
-        "avg_usage": "2.1%",
-        "std_usage": "9.8%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 96,
-        "avg_usage": "80.4%",
-        "std_usage": "39.4%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 97,
-        "avg_usage": "7.4%",
-        "std_usage": "25.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 98,
-        "avg_usage": "1.2%",
-        "std_usage": "3.4%",
-        "max_usage": "18.2%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 99,
-        "avg_usage": "2.3%",
-        "std_usage": "8.0%",
-        "max_usage": "54.5%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 100,
-        "avg_usage": "2.2%",
-        "std_usage": "6.1%",
-        "max_usage": "72.7%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.7%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 101,
-        "avg_usage": "2.3%",
-        "std_usage": "9.8%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.7%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 102,
-        "avg_usage": "53.0%",
-        "std_usage": "49.5%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 103,
-        "avg_usage": "1.6%",
-        "std_usage": "4.2%",
-        "max_usage": "30.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 104,
-        "avg_usage": "1.7%",
-        "std_usage": "9.6%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 105,
-        "avg_usage": "1.5%",
-        "std_usage": "3.9%",
-        "max_usage": "25.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 106,
-        "avg_usage": "0.8%",
-        "std_usage": "2.7%",
-        "max_usage": "20.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 107,
-        "avg_usage": "38.9%",
-        "std_usage": "44.0%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 108,
-        "avg_usage": "3.4%",
-        "std_usage": "10.1%",
-        "max_usage": "60.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 109,
-        "avg_usage": "1.8%",
-        "std_usage": "7.3%",
-        "max_usage": "90.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 110,
-        "avg_usage": "1.7%",
-        "std_usage": "6.4%",
-        "max_usage": "66.7%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 111,
-        "avg_usage": "7.1%",
-        "std_usage": "21.6%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 112,
-        "avg_usage": "96.8%",
-        "std_usage": "17.5%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 113,
-        "avg_usage": "1.9%",
-        "std_usage": "5.0%",
-        "max_usage": "30.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 114,
-        "avg_usage": "1.9%",
-        "std_usage": "6.8%",
-        "max_usage": "70.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 115,
-        "avg_usage": "1.7%",
-        "std_usage": "8.9%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 116,
-        "avg_usage": "1.5%",
-        "std_usage": "3.9%",
-        "max_usage": "20.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 117,
-        "avg_usage": "1.0%",
-        "std_usage": "3.1%",
-        "max_usage": "20.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 118,
-        "avg_usage": "1.7%",
-        "std_usage": "4.1%",
-        "max_usage": "23.1%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 119,
-        "avg_usage": "2.4%",
-        "std_usage": "5.0%",
-        "max_usage": "23.1%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 120,
         "avg_usage": "6.1%",
-        "std_usage": "19.6%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 121,
-        "avg_usage": "4.2%",
-        "std_usage": "10.4%",
-        "max_usage": "50.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 122,
-        "avg_usage": "9.1%",
-        "std_usage": "22.3%",
-        "max_usage": "90.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 123,
-        "avg_usage": "1.4%",
-        "std_usage": "4.3%",
-        "max_usage": "27.3%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 124,
-        "avg_usage": "1.8%",
-        "std_usage": "4.5%",
-        "max_usage": "27.3%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 125,
-        "avg_usage": "2.0%",
-        "std_usage": "9.1%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 126,
-        "avg_usage": "1.4%",
-        "std_usage": "4.1%",
-        "max_usage": "27.3%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 127,
-        "avg_usage": "1.4%",
-        "std_usage": "3.9%",
-        "max_usage": "20.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 128,
-        "avg_usage": "3.1%",
-        "std_usage": "12.6%",
-        "max_usage": "90.9%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 129,
-        "avg_usage": "1.5%",
-        "std_usage": "4.0%",
-        "max_usage": "25.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 130,
-        "avg_usage": "1.0%",
-        "std_usage": "3.3%",
-        "max_usage": "25.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 131,
-        "avg_usage": "2.8%",
-        "std_usage": "9.4%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 132,
-        "avg_usage": "1.9%",
-        "std_usage": "4.6%",
-        "max_usage": "30.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 133,
-        "avg_usage": "1.9%",
-        "std_usage": "9.1%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
-      },
-      {
-        "core_id": 134,
-        "avg_usage": "1.4%",
-        "std_usage": "3.7%",
+        "std_usage": "8.6%",
         "max_usage": "18.2%",
         "min_usage": "0.0%"
       },
       {
-        "core_id": 135,
-        "avg_usage": "0.8%",
-        "std_usage": "3.0%",
-        "max_usage": "27.3%",
+        "core_id": 104,
+        "avg_usage": "72.7%",
+        "std_usage": "38.6%",
+        "max_usage": "100.0%",
+        "min_usage": "18.2%"
+      },
+      {
+        "core_id": 105,
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
-        "core_id": 136,
-        "avg_usage": "1.8%",
-        "std_usage": "4.6%",
-        "max_usage": "27.3%",
+        "core_id": 106,
+        "avg_usage": "10.4%",
+        "std_usage": "0.5%",
+        "max_usage": "11.1%",
+        "min_usage": "10.0%"
+      },
+      {
+        "core_id": 107,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
-        "core_id": 137,
-        "avg_usage": "1.5%",
-        "std_usage": "4.6%",
+        "core_id": 108,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 109,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 110,
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 111,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 112,
+        "avg_usage": "25.9%",
+        "std_usage": "36.7%",
+        "max_usage": "77.8%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 113,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 114,
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 115,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 116,
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 117,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 118,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 119,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 120,
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 121,
+        "avg_usage": "6.4%",
+        "std_usage": "4.5%",
+        "max_usage": "10.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 122,
+        "avg_usage": "69.7%",
+        "std_usage": "42.9%",
+        "max_usage": "100.0%",
+        "min_usage": "9.1%"
+      },
+      {
+        "core_id": 123,
+        "avg_usage": "15.2%",
+        "std_usage": "21.4%",
         "max_usage": "45.5%",
         "min_usage": "0.0%"
       },
       {
-        "core_id": 138,
-        "avg_usage": "1.8%",
-        "std_usage": "7.5%",
+        "core_id": 124,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 125,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 126,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 127,
+        "avg_usage": "7.4%",
+        "std_usage": "10.5%",
+        "max_usage": "22.2%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 128,
+        "avg_usage": "73.3%",
+        "std_usage": "37.7%",
         "max_usage": "100.0%",
+        "min_usage": "20.0%"
+      },
+      {
+        "core_id": 129,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 130,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 131,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 132,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 133,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 134,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 135,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 136,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
+        "min_usage": "0.0%"
+      },
+      {
+        "core_id": 137,
+        "avg_usage": "70.0%",
+        "std_usage": "42.4%",
+        "max_usage": "100.0%",
+        "min_usage": "10.0%"
+      },
+      {
+        "core_id": 138,
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 139,
-        "avg_usage": "1.9%",
-        "std_usage": "6.8%",
-        "max_usage": "90.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 140,
-        "avg_usage": "9.1%",
-        "std_usage": "25.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 141,
-        "avg_usage": "3.0%",
-        "std_usage": "8.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 142,
-        "avg_usage": "1.5%",
-        "std_usage": "4.5%",
-        "max_usage": "41.7%",
-        "min_usage": "0.0%"
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
+        "max_usage": "100.0%",
+        "min_usage": "100.0%"
       },
       {
         "core_id": 143,
-        "avg_usage": "0.7%",
-        "std_usage": "2.9%",
-        "max_usage": "27.3%",
-        "min_usage": "0.0%"
+        "avg_usage": "70.4%",
+        "std_usage": "41.9%",
+        "max_usage": "100.0%",
+        "min_usage": "11.1%"
       },
       {
         "core_id": 144,
-        "avg_usage": "3.1%",
-        "std_usage": "9.2%",
+        "avg_usage": "100.0%",
+        "std_usage": "0.0%",
         "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "min_usage": "100.0%"
       },
       {
         "core_id": 145,
-        "avg_usage": "2.3%",
-        "std_usage": "5.1%",
-        "max_usage": "30.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 146,
-        "avg_usage": "58.0%",
-        "std_usage": "49.3%",
-        "max_usage": "100.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.4%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 147,
-        "avg_usage": "96.8%",
-        "std_usage": "17.5%",
-        "max_usage": "100.0%",
+        "avg_usage": "9.1%",
+        "std_usage": "7.4%",
+        "max_usage": "18.2%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 148,
-        "avg_usage": "2.7%",
-        "std_usage": "8.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 149,
-        "avg_usage": "1.9%",
-        "std_usage": "7.0%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 150,
-        "avg_usage": "1.6%",
-        "std_usage": "5.2%",
-        "max_usage": "54.5%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 151,
-        "avg_usage": "96.8%",
-        "std_usage": "17.3%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.4%",
+        "std_usage": "4.5%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 152,
-        "avg_usage": "3.0%",
-        "std_usage": "10.9%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 153,
-        "avg_usage": "96.8%",
-        "std_usage": "17.3%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 154,
-        "avg_usage": "1.7%",
-        "std_usage": "6.2%",
-        "max_usage": "81.8%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 155,
-        "avg_usage": "1.6%",
-        "std_usage": "4.4%",
-        "max_usage": "30.0%",
+        "avg_usage": "20.0%",
+        "std_usage": "28.3%",
+        "max_usage": "60.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 156,
-        "avg_usage": "2.1%",
-        "std_usage": "7.5%",
-        "max_usage": "81.8%",
+        "avg_usage": "32.2%",
+        "std_usage": "39.3%",
+        "max_usage": "87.5%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 157,
-        "avg_usage": "2.1%",
-        "std_usage": "6.2%",
-        "max_usage": "63.6%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 158,
-        "avg_usage": "0.9%",
-        "std_usage": "3.0%",
-        "max_usage": "20.0%",
+        "avg_usage": "6.1%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 159,
-        "avg_usage": "1.3%",
-        "std_usage": "4.6%",
-        "max_usage": "36.4%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 160,
-        "avg_usage": "1.3%",
-        "std_usage": "4.8%",
-        "max_usage": "50.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 161,
-        "avg_usage": "3.0%",
-        "std_usage": "10.4%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 162,
-        "avg_usage": "2.4%",
-        "std_usage": "8.8%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 163,
-        "avg_usage": "10.2%",
-        "std_usage": "27.8%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 164,
-        "avg_usage": "3.9%",
-        "std_usage": "11.5%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 165,
-        "avg_usage": "2.0%",
-        "std_usage": "7.4%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.7%",
+        "std_usage": "5.2%",
+        "max_usage": "11.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 166,
-        "avg_usage": "2.1%",
-        "std_usage": "7.7%",
-        "max_usage": "90.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 167,
-        "avg_usage": "2.2%",
-        "std_usage": "7.1%",
-        "max_usage": "80.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 168,
-        "avg_usage": "2.7%",
-        "std_usage": "7.6%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 169,
-        "avg_usage": "2.8%",
-        "std_usage": "7.1%",
-        "max_usage": "90.9%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.1%",
+        "std_usage": "0.0%",
+        "max_usage": "9.1%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 170,
-        "avg_usage": "1.9%",
-        "std_usage": "6.8%",
-        "max_usage": "90.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 171,
-        "avg_usage": "19.0%",
-        "std_usage": "37.4%",
+        "avg_usage": "36.4%",
+        "std_usage": "45.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 172,
-        "avg_usage": "1.8%",
-        "std_usage": "5.5%",
-        "max_usage": "50.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 173,
-        "avg_usage": "2.6%",
-        "std_usage": "8.8%",
-        "max_usage": "100.0%",
+        "avg_usage": "6.4%",
+        "std_usage": "4.5%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 174,
-        "avg_usage": "2.6%",
-        "std_usage": "7.9%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 175,
-        "avg_usage": "3.5%",
-        "std_usage": "10.9%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 176,
-        "avg_usage": "1.3%",
-        "std_usage": "3.5%",
-        "max_usage": "20.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 177,
-        "avg_usage": "2.6%",
-        "std_usage": "10.1%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 178,
-        "avg_usage": "2.0%",
-        "std_usage": "9.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 179,
-        "avg_usage": "2.8%",
-        "std_usage": "7.8%",
-        "max_usage": "90.9%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 180,
-        "avg_usage": "1.2%",
-        "std_usage": "3.3%",
-        "max_usage": "22.2%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 181,
-        "avg_usage": "1.6%",
-        "std_usage": "6.1%",
-        "max_usage": "60.0%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
+        "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 182,
-        "avg_usage": "1.9%",
-        "std_usage": "4.2%",
-        "max_usage": "20.0%",
+        "avg_usage": "3.3%",
+        "std_usage": "4.7%",
+        "max_usage": "10.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 183,
-        "avg_usage": "2.6%",
-        "std_usage": "9.8%",
+        "avg_usage": "33.3%",
+        "std_usage": "47.1%",
         "max_usage": "100.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 184,
-        "avg_usage": "4.8%",
-        "std_usage": "14.8%",
-        "max_usage": "100.0%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 185,
-        "avg_usage": "2.7%",
-        "std_usage": "7.0%",
-        "max_usage": "70.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.4%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 186,
         "avg_usage": "3.0%",
-        "std_usage": "8.5%",
-        "max_usage": "81.8%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 187,
-        "avg_usage": "2.1%",
-        "std_usage": "4.7%",
-        "max_usage": "27.3%",
+        "avg_usage": "0.0%",
+        "std_usage": "0.0%",
+        "max_usage": "0.0%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 188,
-        "avg_usage": "2.3%",
-        "std_usage": "5.6%",
-        "max_usage": "50.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.7%",
+        "std_usage": "0.4%",
+        "max_usage": "10.0%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 189,
-        "avg_usage": "3.1%",
-        "std_usage": "7.9%",
-        "max_usage": "90.0%",
-        "min_usage": "0.0%"
+        "avg_usage": "9.1%",
+        "std_usage": "0.0%",
+        "max_usage": "9.1%",
+        "min_usage": "9.1%"
       },
       {
         "core_id": 190,
-        "avg_usage": "2.7%",
-        "std_usage": "9.7%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       },
       {
         "core_id": 191,
-        "avg_usage": "2.1%",
-        "std_usage": "7.2%",
-        "max_usage": "100.0%",
+        "avg_usage": "3.0%",
+        "std_usage": "4.3%",
+        "max_usage": "9.1%",
         "min_usage": "0.0%"
       }
     ],
     "cpu_contention": {
-      "total_ctx_switches": 3838954,
-      "total_interrupts": 9254037
+      "total_ctx_switches": 26256,
+      "total_interrupts": 20949
     },
-    "max_mem": "61.94 GB",
-    "avg_gpu": "0.0%",
-    "max_gpu": "0.0%"
+    "memory": {
+      "max_mem": "0.60 GB",
+      "avg_mem": "0.58 GB",
+      "final_mem": "0.60 GB",
+      "type": "RSS (\u8fdb\u7a0b\u5b9e\u9645\u5360\u7528\u7269\u7406\u5185\u5b58)"
+    },
+    "gpu": {
+      "avg_usage": "0.0%",
+      "max_usage": "0.0%",
+      "avg_mem": "0.37 GB",
+      "max_mem": "0.37 GB"
+    }
   }
 }
