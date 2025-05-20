@@ -5,6 +5,7 @@ import tempfile
 import shutil
 import time
 import re  # 导入正则表达式模块
+import glob  # 用于文件匹配
 
 def list_files_in_directory(directory):
     """列出指定目录中的所有文件和文件夹"""
@@ -139,41 +140,28 @@ def extract_and_compile(metadata, current_dir, temp_dir):
     
     print(f"找到 {len(txt_files)} 个测试文件: {', '.join(txt_files)}")
     
-    # 确保输出目录存在
-    output_dir = os.path.join(parent_path, 'driver', task_type)
-    os.makedirs(output_dir, exist_ok=True)
+    # 确保driver中的输出目录存在
+    driver_output_dir = os.path.join(parent_path, 'driver', task_type)
+    os.makedirs(driver_output_dir, exist_ok=True)
     
     # 依次测试每个文件
     for txt_file in txt_files:
         print(f"\n开始测试文件: {txt_file}")
         input_file = os.path.join(dataset_dir, txt_file)
-        # 创建相应的输出文件名，保持与输入文件相同的基本名称
-        output_filename = f"result_{txt_file}"
-        output_file = os.path.join(output_dir, output_filename)
         
-        # 确保输出目录存在
-        os.makedirs(os.path.dirname(output_file), exist_ok=True)
+        # 寻找格式为 "result_<txt_file>" 的文件
+        result_file_pattern = f"result_{txt_file}"
+        result_file_path = os.path.join(driver_output_dir, result_file_pattern)
         
-        # 手动创建输出文件，确保它存在
-        try:
-            with open(output_file, 'r') as f:
-                f.write('')
-            print(f"成功预创建输出文件: {output_file}")
-            # 为输出文件添加全部权限
-            os.chmod(output_file, 0o666)
-            print(f"已为输出文件添加读写权限")
-        except Exception as e:
-            print(f"预创建输出文件失败: {e}")
-            # 尝试使用绝对路径的可执行文件
-            absolute_executable = os.path.abspath(os.path.join(temp_dir, 'main'))
-            print(f"尝试不同的输出路径和绝对路径可执行文件...")
+        # 检查结果文件是否存在
+        if not os.path.exists(result_file_path):
+            print(f"验证结果文件 {result_file_path} 不存在，跳过此测试文件。")
+            continue
+        
+        # 使用现有的结果文件作为输出文件
+        output_file = result_file_path
+        print(f"使用验证文件: {output_file}")
             
-            # 尝试使用临时目录作为输出
-            output_file = os.path.join(temp_dir, output_filename)
-            with open(output_file, 'w') as f:
-                f.write('')
-            print(f"成功创建临时输出文件: {output_file}")
-        
         # 使用绝对路径的可执行文件
         absolute_executable = os.path.abspath(os.path.join(temp_dir, 'main'))
         run_command = f"{absolute_executable} {input_file} {output_file}"
@@ -194,18 +182,6 @@ def extract_and_compile(metadata, current_dir, temp_dir):
         end_time = time.time()
         runtime = (end_time - start_time) * 1000  # 转换为毫秒
 
-        # 检查输出文件是否存在
-        if os.path.exists(output_file):
-            print(f"运行后输出文件存在: {output_file}")
-            try:
-                with open(output_file, 'r') as f:
-                    content = f.read(100) # 读取前100个字符
-                print(f"输出文件内容前100个字符: {content}")
-            except Exception as e:
-                print(f"读取输出文件失败: {e}")
-        else:
-            print(f"运行后输出文件不存在: {output_file}")
-
         # 检查运行结果
         if run_result.returncode != 0:
             print(f"测试文件 {txt_file} 运行失败！")
@@ -221,7 +197,7 @@ def extract_and_compile(metadata, current_dir, temp_dir):
             # 提取运行时间和验证成功与否的信息
             time_match = re.search(r"Time: (\d+)ms", run_result.stdout)
             success_match = re.search(r"验证成功", run_result.stdout)
-            time_info = time_match.group(1) if time_match else "N/A"
+            time_info = time_match.group(1) if time_match else f"{runtime:.0f}"
             success_info = "验证成功" if success_match else "验证失败"
             log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - {txt_file} - 运行成功 - 运行时间: {time_info}ms - {success_info}\n"
 
