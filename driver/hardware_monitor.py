@@ -146,8 +146,10 @@ class HardwareMonitor:
         core_metrics = []
         if filtered_metrics and 'cpu_per_core' in filtered_metrics[0] and len(filtered_metrics[0]['cpu_per_core']) > 0:
             core_usage_data = [m['cpu_per_core'] for m in filtered_metrics]
+            '''
             for core_idx in range(len(core_usage_data[0])):
                 single_core_usage = [sample[core_idx] for sample in core_usage_data]
+
                 core_metrics.append({
                     "core_id": core_idx,
                     "avg_usage": f"{np.mean(single_core_usage):.1f}%",
@@ -155,6 +157,7 @@ class HardwareMonitor:
                     "max_usage": f"{np.max(single_core_usage):.1f}%",
                     "min_usage": f"{np.min(single_core_usage):.1f}%"
                 })
+            '''
 
         # CPU竞争指标
         total_ctx_switches = 0
