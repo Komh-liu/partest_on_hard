@@ -34,3 +34,81 @@
   avg_gpu_usage: 0.0
   max_gpu_usage: 0
   核心代码执行时段: 17181.999921798706ms
+2025-05-22 23:14:35 - TBB - array_sum - 运行成功 - 运行时间: 613ms - 验证成功
+  avg_cpu_usage: 10.674999999999999
+  max_cpu_usage: 12.4
+  avg_cpu_load_balance_std: 20.38708577264771
+  avg_cpu_load_balance_max_diff: 100.0
+  ctx_switch_voluntary_total: 0
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 1.9276498898828236
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.007558689080544878
+  max_memory_usage: 0.007558689080544878
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.0
+  max_gpu_pcie_throughput: 0
+  核心代码执行时段: 613.0001544952393ms
+2025-05-22 23:14:46 - TBB - matrix_multiply - 运行成功 - 运行时间: 8758ms - 验证成功
+  avg_cpu_usage: 11.367647058823527
+  max_cpu_usage: 13.4
+  avg_cpu_load_balance_std: 12.206860570072228
+  avg_cpu_load_balance_max_diff: 98.22941176470589
+  ctx_switch_voluntary_total: 0
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 0.13581039936955386
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.008799413590510095
+  max_memory_usage: 0.008799413590510093
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.029411764705882353
+  max_gpu_pcie_throughput: 1
+  核心代码执行时段: 8759.000062942505ms
+2025-05-22 23:16:13 - TBB - graph_bfs - 运行成功 - 运行时间: 3162ms - 验证成功
+  avg_cpu_usage: 9.247058823529413
+  max_cpu_usage: 19.0
+  avg_cpu_load_balance_std: 12.897024043480407
+  avg_cpu_load_balance_max_diff: 96.51176470588236
+  ctx_switch_voluntary_total: 2
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 1.2680911766503495
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.00927306215992312
+  max_memory_usage: 0.00927306215992312
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.0
+  max_gpu_pcie_throughput: 0
+  核心代码执行时段: 3161.9999408721924ms
+2025-05-22 23:23:22 - TBB - array_sum - 运行成功 - 运行时间: 6ms - 验证失败
+2025-05-22 23:23:34 - TBB - matrix_multiply - 运行成功 - 运行时间: 9555ms - 验证成功
+2025-05-22 23:25:00 - TBB - graph_bfs - 运行成功 - 运行时间: 3497ms - 验证成功
+2025-05-22 23:25:19 - TBB - array_sum - 运行成功 - 运行时间: 6ms - 验证失败
+2025-05-22 23:25:38 - TBB - array_sum - 运行成功 - 运行时间: 6ms - 验证失败
+  核心代码执行时段: 6.000041961669922ms
+2025-05-22 23:25:50 - TBB - matrix_multiply - 运行成功 - 运行时间: 9268ms - 验证成功
+  avg_cpu_usage: 10.630952380952381
+  max_cpu_usage: 15.0
+  avg_cpu_load_balance_std: 9.701237788494675
+  avg_cpu_load_balance_max_diff: 98.36666666666666
+  ctx_switch_voluntary_total: 0
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 0.34290907420115907
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.007862988138614727
+  max_memory_usage: 0.007875212025412416
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.023809523809523808
+  max_gpu_pcie_throughput: 1
+  核心代码执行时段: 9268.00012588501ms

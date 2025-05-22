@@ -6,17 +6,32 @@
     "gpu_count": 1
   },
   "metrics": {
-    "avg_cpu_usage": 10.288,
-    "max_cpu_usage": 35.5,
-    "avg_memory_usage": 0.008136457039716962,
-    "max_memory_usage": 0.008136457039716962,
+    "avg_cpu_usage": 9.247058823529413,
+    "max_cpu_usage": 19.0,
+    "avg_cpu_load_balance_std": 12.897024043480407,
+    "avg_cpu_load_balance_max_diff": 96.51176470588236,
+    "ctx_switch_voluntary_total": 2,
+    "ctx_switch_involuntary_total": 0,
+    "ctx_switch_voluntary_per_sec": 1.2680911766503495,
+    "ctx_switch_involuntary_per_sec": 0.0,
+    "avg_memory_usage": 0.00927306215992312,
+    "max_memory_usage": 0.00927306215992312,
     "avg_gpu_usage": 0.0,
-    "max_gpu_usage": "0"
+    "max_gpu_usage": "0",
+    "avg_gpu_memory_percent": 1.844671063344732,
+    "max_gpu_memory_percent": 1.844671063344732,
+    "avg_gpu_pcie_throughput": 0.0,
+    "max_gpu_pcie_throughput": "0"
   },
   "task_type": "graph_bfs",
+  "cache_metrics": {
+    "L1_miss": 0,
+    "LLC_miss": 0,
+    "instructions": 0
+  },
   "time_window": {
-    "start": 1747919410.203,
-    "end": 1747919413.149,
-    "duration_ms": 2945.99986076355
+    "start": 1747926969.584,
+    "end": 1747926972.746,
+    "duration_ms": 3161.9999408721924
   }
 }

@@ -7,9 +7,14 @@
   },
   "metrics": {},
   "task_type": "array_sum",
+  "cache_metrics": {
+    "L1_miss": 0,
+    "LLC_miss": 0,
+    "instructions": 0
+  },
   "time_window": {
-    "start": 1747919311.855,
-    "end": 1747919311.865,
-    "duration_ms": 9.999990463256836
+    "start": 1747927537.997,
+    "end": 1747927538.003,
+    "duration_ms": 6.000041961669922
   }
 }

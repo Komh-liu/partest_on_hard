@@ -7,6 +7,7 @@ import time
 import re
 import matplotlib.pyplot as plt
 from hardware_monitor import HardwareMonitor
+import sys
 
 def json_serializable(obj):
     """将对象转换为 JSON 可序列化的形式"""
@@ -30,7 +31,7 @@ def list_files_in_directory(directory):
     for file in files:
         print(f"  {file}")
 
-def extract_and_compile(metadata, current_dir, temp_dir):
+def extract_and_compile(metadata, current_dir, temp_dir, monitor_mode):
     framework = metadata['framework']
     task_type = metadata['task_type']
 
@@ -130,59 +131,88 @@ def extract_and_compile(metadata, current_dir, temp_dir):
     
     if compile_result.returncode != 0:
         print("编译失败！")
-        print("编译错误输出:", compile_result.stderr)
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 编译失败 - 运行时长: N/A"
+        with open('log.txt', 'a') as log_file:
+            log_file.write(log_content + '\n')
         monitor.stop_monitoring()
         return
 
-    # 设置运行参数
     parent_path = os.path.dirname(current_dir)
+    # 运行测试代码
     input_file = os.path.join(parent_path, 'dataset', task_type, 'data.txt')
     output_file = os.path.join(parent_path, 'driver', task_type, 'result.txt')
     run_command = f"./{os.path.basename(os.path.join(temp_dir, 'main'))} {input_file} {output_file}"
-
-    # 运行测试
     start_time = time.time()
+
     try:
-        run_result = subprocess.run(run_command, shell=True, capture_output=True, text=True, cwd=temp_dir, timeout=300)
+        run_result = subprocess.run(run_command, shell=True, capture_output=True, text=True, cwd=temp_dir, timeout=300)  # 设置超时时间为300秒（5分钟）
         output = run_result.stdout
         
-        # 提取时间戳
+        # 提取BFS核心代码执行时间戳
         phase_times = None
         start_match = re.search(r'\[METRICS\] BFS_TIME_START=(\d+)', output)
         end_match = re.search(r'\[METRICS\] BFS_TIME_END=(\d+)', output)
         
         if start_match and end_match:
+            # 提取并转换为秒级时间戳
             phase_times = {
-                "bfs_start": float(start_match.group(1)) / 1000.0,
-                "bfs_end": float(end_match.group(1)) / 1000.0
+                "bfs_start": int(start_match.group(1)) / 1000.0,
+                "bfs_end": int(end_match.group(1)) / 1000.0
             }
+            print(f"核心代码时间窗口: {phase_times['bfs_start']} - {phase_times['bfs_end']} (持续时间: {(phase_times['bfs_end']-phase_times['bfs_start'])*1000:.1f}ms)")
+        else:
+            print("未检测到BFS时间戳标记，将使用完整运行时间分析")
             
     except subprocess.TimeoutExpired:
         print("测试代码运行超时！")
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行超时 - 运行时长: {int((time.time() - start_time) * 1000)}ms"
+        with open("log.txt", 'a') as log_file:
+            log_file.write(log_content + '\n')
         monitor.stop_monitoring()
         shutil.rmtree(temp_dir)
         return
 
     end_time = time.time()
-    runtime = int((end_time - start_time) * 1000)
+    runtime = int((end_time - start_time) * 1000)  # 转换为毫秒
 
-    # 停止监控
+    # 停止监控并生成报告
     monitor.stop_monitoring()
     report = monitor.generate_report(task_type, phase_times)
 
-    # 处理运行结果
+    # 检查运行结果
     if run_result.returncode != 0:
         print("测试代码运行失败！")
-        print("错误信息：", run_result.stderr)
+        print("错误信息：")
+        print(run_result.stderr)
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行失败 - 运行时长: {runtime}ms"
     else:
         print("测试代码运行成功！")
-        print("输出结果：", run_result.stdout)
+        print("输出结果：")
+        print(run_result.stdout)
+        # 提取运行时间和验证成功与否的信息
+        time_match = re.search(r"Time: (\d+)ms", run_result.stdout)
+        success_match = re.search(r"验证成功", run_result.stdout)
+        time_info = time_match.group(1) if time_match else "N/A"
+        success_info = "验证成功" if success_match else "验证失败"
+        log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 运行成功 - 运行时间: {time_info}ms - {success_info}"
 
-    # 生成报告
-    try:
-        generate_detailed_report(report, task_type, monitor)
-    except Exception as e:
-        print(f"生成报告时出错: {str(e)}")
+    with open("log.txt", 'a') as log_file:
+        log_file.write(log_content + '\n')
+        if monitor_mode:
+            # 追加监控数据
+            for key, value in report['metrics'].items():
+                log_file.write(f'  {key}: {value}\n')
+            
+            # 如果存在BFS时间窗口信息，也记录下来
+            if 'time_window' in report and report['time_window']:
+                log_file.write(f"  核心代码执行时段: {report['time_window']['duration_ms']}ms\n")
+
+    # 生成可视化报告
+    if monitor_mode:
+        try:
+            generate_detailed_report(report, task_type, monitor)
+        except Exception as e:
+            print(f"生成报告时出错: {str(e)}")
 
     # 清理临时文件
     shutil.rmtree(temp_dir)
@@ -237,6 +267,9 @@ def generate_detailed_report(report: dict, task_name: str, monitor: HardwareMoni
             print(f"保存JSON报告时出错: {str(e)}")
 
 def main():
+    # 检查是否有'm'参数
+    monitor_mode = '-m' in sys.argv
+
     # 定义JSON文件路径
     json_file_path = 'output.json'
     
@@ -263,7 +296,7 @@ def main():
     for task in data['tasks']:
         metadata = task['metadata']
         temp_dir = tempfile.mkdtemp()
-        extract_and_compile(metadata, current_dir, temp_dir)
+        extract_and_compile(metadata, current_dir, temp_dir, monitor_mode)
 
 if __name__ == "__main__":
     main()
