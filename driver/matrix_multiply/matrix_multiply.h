@@ -22,6 +22,8 @@ void matrix_multiply(const Matrix& A, Matrix& result);
 #include "mpi_impl.h"
 #elif defined(USE_CUDA)
 #include "cuda_impl.cu"
+#elif defined(USE_TBB)  // 添加TBB支持
+#include "tbb_impl.h"
 #else
 #include "single_thread_impl.h"
 #endif

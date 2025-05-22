@@ -2,6 +2,56 @@
   "tasks": [
     {
       "metadata": {
+        "task_type": "array_sum",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 12,
+              "threads": 32,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <tbb/tbb.h>\n#include <tbb/parallel_reduce.h>\n#include <tbb/blocked_range.h>\n#include <vector>\n\nusing Array = std::vector<long long>;\n\nlong long array_sum(const Array& arr) {\n    tbb::global_control gc(tbb::global_control::max_allowed_parallelism, 32);\n    return tbb::parallel_reduce(\n        tbb::blocked_range<size_t>(0, arr.size()),\n        0LL,\n        [&](const tbb::blocked_range<size_t>& r, long long init) {\n            for(size_t i = r.begin(); i < r.end(); ++i)\n                init += arr[i];\n            return init;\n        },\n        std::plus<long long>()\n    );\n}",
+        "framework": "TBB"
+      }
+    },
+    {
+      "metadata": {
+        "task_type": "matrix_multiply",
+        "hardware": {
+          "cpus": [
+            {
+              "cores": 12,
+              "threads": 32,
+              "frequency": "3.6 GHz",
+              "available": "True"
+            }
+          ],
+          "gpu": {
+            "cuda_cores": 10496,
+            "memory": {
+              "size": "24 GB",
+              "type": "GDDR6X"
+            },
+            "available": "True"
+          }
+        },
+        "code": "#include <tbb/tbb.h>\n#include <tbb/parallel_for.h>\n#include <tbb/blocked_range.h>\n\nusing Matrix = std::vector<std::vector<int>>;\n\nvoid matrix_multiply(const Matrix& A, Matrix& result) {\n    int n = A.size();\n    if (n == 0) {\n        result.clear();\n        return;\n    }\n    int m = A[0].size();\n    result.resize(n);\n    for (auto& row : result) {\n        row.resize(n);\n    }\n\n    tbb::parallel_for(tbb::blocked_range<int>(0, n),\n        [&](const tbb::blocked_range<int>& range) {\n            for (int i = range.begin(); i != range.end(); ++i) {\n                const auto& rowA = A[i];\n                auto& resRow = result[i];\n                for (int j = 0; j < n; ++j) {\n                    int sum = 0;\n                    const auto& rowB = A[j];\n                    for (int k = 0; k < m; ++k) {\n                        sum += rowA[k] * rowB[k];\n                    }\n                    resRow[j] = sum;\n                }\n            }\n        }\n    );\n}",
+        "framework": "TBB"
+      }
+    },
+    {
+      "metadata": {
         "task_type": "graph_bfs",
         "hardware": {
           "cpus": [
@@ -21,8 +71,8 @@
             "available": "True"
           }
         },
-        "code": "#include <vector>\n#include <omp.h>\n\nstruct Graph {\n    int numVertices;\n    int numEdges;\n    int* offset;\n    int* edges;\n};\n\nvoid bfs(const Graph& graph, int start, std::vector<int>& result) {\n    result.assign(graph.numVertices, -1);\n    result[start] = 0;\n    \n    std::vector<int> current, next;\n    current.reserve(graph.numVertices);\n    next.reserve(graph.numVertices);\n    current.push_back(start);\n    \n    while (!current.empty()) {\n        std::vector<std::vector<int>> local_nexts(omp_get_max_threads());\n        \n        #pragma omp parallel\n        {\n            int tid = omp_get_thread_num();\n            #pragma omp for\n            for (int i = 0; i < static_cast<int>(current.size()); ++i) {\n                int u = current[i];\n                for (int j = graph.offset[u]; j < graph.offset[u+1]; ++j) {\n                    int v = graph.edges[j];\n                    int expected = -1;\n                    if (__sync_val_compare_and_swap(&result[v], expected, result[u]+1) == expected) {\n                        local_nexts[tid].push_back(v);\n                    }\n                }\n            }\n        }\n        \n        next.clear();\n        size_t total = 0;\n        for (auto& vec : local_nexts) total += vec.size();\n        next.reserve(total);\n        for (auto& vec : local_nexts) {\n            next.insert(next.end(), vec.begin(), vec.end());\n        }\n        current.swap(next);\n    }\n}",
-        "framework": "OpenMP"
+        "code": "#include <tbb/tbb.h>\n#include <tbb/parallel_for.h>\n#include <tbb/enumerable_thread_specific.h>\n#include <tbb/concurrent_vector.h>\n#include <vector>\n#include <atomic>\n#include <memory>\n\nvoid bfs(const Graph& graph, int start, std::vector<int>& result) {\n    const int num_vertices = graph.numVertices;\n    result.resize(num_vertices);\n    std::unique_ptr<std::atomic<int>[]> distances(new std::atomic<int>[num_vertices]);\n\n    tbb::parallel_for(tbb::blocked_range<int>(0, num_vertices), [&](const tbb::blocked_range<int>& r) {\n        for (int i = r.begin(); i < r.end(); ++i)\n            distances[i].store(-1, std::memory_order_relaxed);\n    });\n\n    distances[start].store(0, std::memory_order_relaxed);\n    tbb::concurrent_vector<int> current_frontier;\n    current_frontier.push_back(start);\n\n    while (!current_frontier.empty()) {\n        tbb::enumerable_thread_specific<std::vector<int>> local_next;\n\n        tbb::parallel_for(tbb::blocked_range<size_t>(0, current_frontier.size()), [&](const tbb::blocked_range<size_t>& r) {\n            auto& local = local_next.local();\n            for (size_t i = r.begin(); i < r.end(); ++i) {\n                int u = current_frontier[i];\n                int current_dist = distances[u].load(std::memory_order_relaxed);\n                for (int j = graph.offset[u]; j < graph.offset[u + 1]; ++j) {\n                    int v = graph.edges[j];\n                    int expected = -1;\n                    if (distances[v].compare_exchange_strong(expected, current_dist + 1, std::memory_order_relaxed, std::memory_order_relaxed))\n                        local.push_back(v);\n                }\n            }\n        });\n\n        tbb::concurrent_vector<int> next_frontier;\n        for (const auto& vec : local_next)\n            next_frontier.grow_by(vec.begin(), vec.end());\n        \n        current_frontier.swap(next_frontier);\n    }\n\n    tbb::parallel_for(tbb::blocked_range<int>(0, num_vertices), [&](const tbb::blocked_range<int>& r) {\n        for (int i = r.begin(); i < r.end(); ++i)\n            result[i] = distances[i].load(std::memory_order_relaxed);\n    });\n}",
+        "framework": "TBB"
       }
     }
   ]

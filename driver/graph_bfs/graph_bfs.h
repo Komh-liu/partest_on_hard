@@ -38,6 +38,8 @@ void bfs(const Graph& graph, int start,std::vector<int> & result);
 #include "mpi_impl.h"
 #elif defined(USE_CUDA)
 #include "cuda_impl.cu"  // 仍然直接包含.cu文件
+#elif defined(USE_TBB)  // 添加TBB支持
+#include "tbb_impl.h"
 #else
 #include "single_thread_impl.h"
 #endif

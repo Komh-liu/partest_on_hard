@@ -30,6 +30,8 @@ def extract_framework_from_code(code_content):
         return "MPI"
     elif "__global__" in code_content:
         return "CUDA"
+    elif "tbb::" in code_content:  # Add TBB detection
+        return "TBB"
     else:
         return "Serial"
 
@@ -53,7 +55,8 @@ def generate_code(config_path):
 
     available_frameworks = [
         "Serial",
-        "OpenMP",
+        #"OpenMP",
+        "TBB",  # Add TBB to available frameworks
         # "MPI",
         # "CUDA",
     ]
@@ -75,9 +78,11 @@ def generate_code(config_path):
         - Check the logic of the generated code for correctness.
         - Ensure that the code adheres to best practices for the selected framework.
         - Modify the code if necessary to improve performance and reduce resource consumption.
+        
+        **Framework-Specific Information**:
+        - Intel TBB is a C++ library for parallel programming that provides high-level abstractions for parallel patterns. It's designed for task parallelism and supports nested parallelism well.
         """
         
-
         user_prompt_content = f"Generate optimized parallel computing code according to the task:\n\n"
         for framework in available_frameworks:
             if framework == "CUDA":
@@ -86,6 +91,19 @@ def generate_code(config_path):
             else:
                 function_signature = task["function_signatures"]["other"]
                 context = task["contexts"]["other"]
+            
+            # Add TBB include headers for the TBB framework option
+            if framework == "TBB":
+                tbb_headers = """
+                #include <tbb/tbb.h>
+                #include <tbb/parallel_for.h>
+                #include <tbb/parallel_reduce.h>
+                #include <tbb/blocked_range.h>
+                #include <tbb/concurrent_vector.h>
+                #include <tbb/concurrent_queue.h>
+                """
+                context = tbb_headers + context
+            
             user_prompt_content += f"If you choose the {framework} framework:\nIncluded header files and structure definitions:\n{context}\n\nFunction signature:\n{function_signature}\n\n"
 
         user_prompt_content += """
@@ -95,6 +113,13 @@ def generate_code(config_path):
         - Optimize loop structures to reduce overhead.
         - Use appropriate parallel constructs to maximize hardware utilization.
         - **Consider parallel-friendly data structures**: When selecting data structures, ensure they can be efficiently used in a parallel environment. For example, use concurrent data structures or partition data to minimize contention and maximize parallelism.
+        
+        **TBB-Specific Tips**:
+        - Use `tbb::parallel_for` for parallel loops
+        - Use `tbb::parallel_reduce` for reduction operations
+        - Use `tbb::blocked_range` to define chunks of work
+        - Consider `tbb::concurrent_vector` or `tbb::concurrent_queue` for shared data structures
+        - Use `tbb::global_control` to set the maximum number of threads
         """
         
         user_prompt = {
@@ -133,7 +158,22 @@ def generate_code(config_path):
         code_lines = []
         inside_code_block = False
 
+        # Extract framework information from the response
         for line in response_lines:
+            if "Selected framework:" in line:
+                framework_text = line.split("Selected framework:")[1].strip()
+                # Clean up the framework name
+                if framework_text == "Intel TBB" or framework_text == "TBB":
+                    framework = "TBB"
+                elif framework_text == "OpenMP":
+                    framework = "OpenMP"
+                elif framework_text == "CUDA":
+                    framework = "CUDA"
+                elif framework_text == "MPI":
+                    framework = "MPI"
+                elif "Serial" in framework_text:
+                    framework = "Serial"
+            
             if line.startswith("```cpp"):
                 inside_code_block = True
                 continue

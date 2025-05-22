@@ -186,8 +186,9 @@ int main(int argc, char* argv[]) {
 
     // 输出耗时和验证结果
     std::cout << "Time: " 
-              << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-              << "ms\n";
+            << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count()
+            << "ms\n";
+
     // 生成包含时间戳的文件名
     std::string combined_file = generate_filename_with_timestamp(output_file);
     save_matrix(result,combined_file);

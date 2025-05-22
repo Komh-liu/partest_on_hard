@@ -82,8 +82,9 @@ int main(int argc, char* argv[]) {
     std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
     // 输出耗时和验证结果
     std::cout << "Time: " 
-              << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-              << "ms\n";
+            << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count()
+            << "ms\n";
+
     if (result == sum)
         std::cout << "验证成功" << std::endl;
     else

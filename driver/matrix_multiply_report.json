@@ -1,15 +1,22 @@
 {
-  "task_name": "matrix_multiply",
   "hardware": {
     "cpu_cores": 96,
-    "gpu_count": 1,
-    "cuda_cc": "89"
+    "cpu_threads": 192,
+    "memory_total": 1081834999808,
+    "gpu_count": 1
   },
   "metrics": {
-    "avg_cpu": "12.4%",
-    "max_cpu": "17.0%",
-    "max_mem": "60.28 GB",
-    "avg_gpu": "0.0%",
-    "max_gpu": "0.0%"
+    "avg_cpu_usage": 11.589610389610387,
+    "max_cpu_usage": 18.4,
+    "avg_memory_usage": 0.0078100900798176625,
+    "max_memory_usage": 0.00781009007981766,
+    "avg_gpu_usage": 0.0,
+    "max_gpu_usage": "0"
+  },
+  "task_type": "matrix_multiply",
+  "time_window": {
+    "start": 1747919314.816,
+    "end": 1747919324.617,
+    "duration_ms": 9801.000118255615
   }
 }

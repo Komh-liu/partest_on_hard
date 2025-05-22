@@ -1,15 +1,15 @@
 {
-  "task_name": "array_sum",
   "hardware": {
     "cpu_cores": 96,
-    "gpu_count": 1,
-    "cuda_cc": "89"
+    "cpu_threads": 192,
+    "memory_total": 1081834999808,
+    "gpu_count": 1
   },
-  "metrics": {
-    "avg_cpu": "9.2%",
-    "max_cpu": "12.4%",
-    "max_mem": "61.38 GB",
-    "avg_gpu": "0.0%",
-    "max_gpu": "0.0%"
+  "metrics": {},
+  "task_type": "array_sum",
+  "time_window": {
+    "start": 1747919311.855,
+    "end": 1747919311.865,
+    "duration_ms": 9.999990463256836
   }
 }
