@@ -1,5 +1,5 @@
 CONFIG = {
-    "model": "deepseek-r1",# qwen3 
+    "model": "claude-sonnet-4-20250514",# qwen3 
     "devices": {
         "cpu": {
             "type": "CPU",

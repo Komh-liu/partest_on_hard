@@ -112,3 +112,40 @@
   avg_gpu_pcie_throughput: 0.023809523809523808
   max_gpu_pcie_throughput: 1
   核心代码执行时段: 9268.00012588501ms
+2025-05-23 20:31:27 - TBB - array_sum - 运行成功 - 运行时间: 5ms - 验证失败
+2025-05-23 20:31:33 - TBB - matrix_multiply - 运行成功 - 运行时间: 2709ms - 验证成功
+2025-05-23 20:33:00 - TBB - graph_bfs - 运行成功 - 运行时间: 532ms - 验证成功
+2025-05-23 20:35:33 - TBB - array_sum - 运行成功 - 运行时间: 161ms - 验证失败
+2025-05-23 20:35:40 - TBB - matrix_multiply - 运行成功 - 运行时间: 2856ms - 验证成功
+2025-05-23 20:36:58 - TBB - graph_bfs - 运行成功 - 运行时间: 393ms - 验证成功
+
+Model updated to deepseek-r1 at 1748003899.086805
+2025-05-23 20:42:14 - TBB - array_sum - 运行成功 - 运行时间: 219ms - 验证失败
+2025-05-23 20:42:20 - TBB - matrix_multiply - 运行成功 - 运行时间: 2605ms - 验证成功
+2025-05-23 20:42:21 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to deepseek-v3 at 1748004141.7467802
+2025-05-23 20:43:06 - TBB - array_sum - 运行成功 - 运行时间: 27ms - 验证失败
+2025-05-23 20:43:14 - TBB - matrix_multiply - 运行成功 - 运行时间: 5251ms - 验证成功
+2025-05-23 20:44:29 - TBB - graph_bfs - 运行成功 - 运行时间: 2ms - 验证失败
+
+Model updated to llama-4-scout-17b-16e-instruct at 1748004269.6767685
+2025-05-23 20:45:02 - TBB - array_sum - 运行成功 - 运行时间: 216ms - 验证失败
+2025-05-23 20:45:04 - TBB - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-23 20:45:06 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen-coder-plus at 1748004306.6467633
+2025-05-23 20:45:43 - TBB - array_sum - 运行成功 - 运行时间: 213ms - 验证失败
+2025-05-23 20:45:52 - TBB - matrix_multiply - 运行成功 - 运行时间: 5758ms - 验证成功
+2025-05-23 20:45:54 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen2.5-coder-3b-instruct at 1748004354.7467554
+2025-05-23 20:46:22 - TBB - array_sum - 编译失败 - 运行时长: N/A
+2025-05-23 20:46:37 - TBB - matrix_multiply - 运行成功 - 运行时间: 11957ms - 验证失败
+2025-05-23 20:46:38 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-23 21:11:31 - TBB - array_sum - 编译失败 - 运行时长: N/A
+2025-05-23 21:11:39 - TBB - matrix_multiply - 运行成功 - 运行时间: 5395ms - 验证成功
+2025-05-23 21:11:41 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-23 21:20:53 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-05-23 21:20:58 - CUDA - matrix_multiply - 运行成功 - 运行时间: 2101ms - 验证成功
+2025-05-23 21:22:18 - CUDA - graph_bfs - 运行成功 - 运行时间: 1962ms - 验证失败

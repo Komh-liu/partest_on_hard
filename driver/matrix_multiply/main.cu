@@ -7,19 +7,21 @@
 #include <ctime>
 #include <filesystem>
 
-using Matrix = std::vector<int>;
-
-// 加载矩阵函数
-Matrix load_matrix(const std::string& filename, int& rows, int& cols) {
+// CUDA版本使用一维数组表示矩阵，这里需要加载为一维形式
+Matrix load_matrix(const std::string& filename, int& N, int& M) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cerr << "Failed to open file: " << filename << std::endl;
         exit(1);
     }
 
-    file >> rows >> cols; // 读取矩阵行数和列数
+    int rows, cols;
+    file >> rows >> cols; // 读取矩阵的行数和列数
+    N = rows;
+    M = cols;
 
-    Matrix matrix(rows * cols, 0); // 初始化为全零矩阵
+    // 初始化为全零矩阵（一维表示）
+    Matrix matrix(rows * cols, 0);
 
     // 读取三元组形式的非零元素
     int i, j, value;
@@ -34,7 +36,7 @@ Matrix load_matrix(const std::string& filename, int& rows, int& cols) {
     return matrix;
 }
 
-// 将矩阵保存为三元组形式
+// 将一维矩阵保存为三元组形式
 void save_matrix(const Matrix& matrix, int rows, int cols, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -42,14 +44,12 @@ void save_matrix(const Matrix& matrix, int rows, int cols, const std::string& fi
         exit(1);
     }
 
-    file << rows << " " << cols << std::endl; // 写入矩阵的行数和列数
-
     // 保存非零元素为三元组形式
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            int value = matrix[i * cols + j];
-            if (value != 0) {
-                file << i << " " << j << " " << value << std::endl;
+            int index = i * cols + j;
+            if (matrix[index] != 0) {
+                file << i << " " << j << " " << matrix[index] << std::endl;
             }
         }
     }
@@ -118,70 +118,52 @@ std::string generate_filename_with_timestamp(const std::string& base_filename) {
     return (path.parent_path() / new_filename).string();
 }
 
-// 将输入文件和输出文件的内容保存到新文件
-void save_combined_file(const std::string& input_file, const std::string& output_file, const std::string& combined_file) {
-    std::ofstream combined(combined_file);
-    if (!combined.is_open()) {
-        std::cerr << "Failed to open combined file: " << combined_file << std::endl;
-        exit(1);
-    }
-
-    // 写入输入文件的内容
-    // combined << "Input File Content:\n";
-    std::ifstream input(input_file);
-    std::string line;
-    //while (std::getline(input, line)) {
-    //    combined << line << "\n";
-    //}
-    input.close();
-
-    // 写入输出文件的内容
-    //combined << "\nOutput File Content:\n";
-    std::ifstream output(output_file);
-    while (std::getline(output, line)) {
-        combined << line << "\n";
-    }
-    output.close();
-
-    combined.close();
-}
-
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <input_file> <output_file>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <input_matrix_file> <output_result_file>" << std::endl;
         return 1;
     }
 
     std::string input_file = argv[1];
     std::string output_file = argv[2];
 
-    int N, M;
-    Matrix A = load_matrix(input_file, N, M); // 加载矩阵
-    Matrix result; // 初始化结果矩阵为空
-    result.resize(N * N, 0);
-    auto start = std::chrono::high_resolution_clock::now();
-    matrix_multiply(A, N, M, result); // 统一函数调用
-    auto end = std::chrono::high_resolution_clock::now();
+    // 加载矩阵（一维表示）
+    int N, M;  // 矩阵的行数和列数
+    Matrix A = load_matrix(input_file, N, M);
+    Matrix result(M * M, 0);  // 初始化结果矩阵为全零（一维表示）
 
-    // 输出耗时和验证结果
+    // 记录开始时间戳并写入标准输出
+    auto time_start = std::chrono::high_resolution_clock::now();
+    auto start_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        time_start.time_since_epoch()
+    ).count();
+    std::cout << "[METRICS] BFS_TIME_START=" << start_ms << std::endl << std::flush;
+
+    // 执行矩阵乘法
+    matrix_multiply(A, N, M, result);  // 使用CUDA特定的函数签名
+
+    // 记录结束时间戳并写入标准输出
+    auto time_end = std::chrono::high_resolution_clock::now();
+    auto end_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        time_end.time_since_epoch()
+    ).count();
+    std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
+
+    // 输出耗时
     std::cout << "Time: " 
-              << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-              << "ms\n";
-
-    // 保存结果到输出文件
-    save_matrix(result, N, N, output_file);
+            << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start).count()
+            << "ms\n";
 
     // 生成包含时间戳的文件名
     std::string combined_file = generate_filename_with_timestamp(output_file);
+    save_matrix(result, M, M, combined_file);  // 保存结果矩阵
 
-    // 保存输入文件和输出文件的内容到新文件
-    save_combined_file(input_file, output_file, combined_file);
-
-    //std::cout << "Combined file saved as: " << combined_file << std::endl;
+    // 比较结果
     bool c_result = compare_text_files(combined_file, output_file);
     if(c_result)
        std::cout<<"验证成功"<<std::endl;
     else
         std::cout<<"验证失败"<<std::endl;
+    
     return 0;
 }

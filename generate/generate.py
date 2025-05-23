@@ -1,3 +1,4 @@
+# https://api.siliconflow.cn/v1/chat/completions
 import json
 import os
 from openai import OpenAI
@@ -28,9 +29,9 @@ def extract_framework_from_code(code_content):
         return "OpenMP"
     elif "MPI_" in code_content:
         return "MPI"
-    elif "__global__" in code_content:
+    elif "__global__" in code_content or "cudaMalloc" in code_content:
         return "CUDA"
-    elif "tbb::" in code_content:  # Add TBB detection
+    elif "tbb::" in code_content:
         return "TBB"
     else:
         return "Serial"
@@ -55,10 +56,10 @@ def generate_code(config_path):
 
     available_frameworks = [
         "Serial",
-        #"OpenMP",
-        "TBB",  # Add TBB to available frameworks
+        "OpenMP",
+        "TBB",
         # "MPI",
-        # "CUDA",
+        "CUDA",
     ]
 
     for task in config["tasks"]:
@@ -72,15 +73,16 @@ def generate_code(config_path):
         - Minimize memory usage.
         - Maximize CPU/GPU utilization.
         - Ensure thread safety and avoid race conditions.
-        - **Consider parallel-friendly data structures**: Ensure that the chosen data structures can be efficiently utilized in a parallel environment to maximize performance. For example, use concurrent data structures or partition data to minimize contention and maximize parallelism.
+        - Consider parallel-friendly data structures to maximize performance.
 
         **Code Review and Correction**:
         - Check the logic of the generated code for correctness.
         - Ensure that the code adheres to best practices for the selected framework.
         - Modify the code if necessary to improve performance and reduce resource consumption.
         
-        **Framework-Specific Information**:
-        - Intel TBB is a C++ library for parallel programming that provides high-level abstractions for parallel patterns. It's designed for task parallelism and supports nested parallelism well.
+        **Framework Information**:
+        - All frameworks provide parallelism capabilities, but have different strengths and use cases.
+        - Choose the most appropriate one based on the hardware and task requirements.
         """
         
         user_prompt_content = f"Generate optimized parallel computing code according to the task:\n\n"
@@ -92,15 +94,12 @@ def generate_code(config_path):
                 function_signature = task["function_signatures"]["other"]
                 context = task["contexts"]["other"]
             
-            # Add TBB include headers for the TBB framework option
+            # Add headers for TBB framework option, keeping it simple
             if framework == "TBB":
                 tbb_headers = """
                 #include <tbb/tbb.h>
                 #include <tbb/parallel_for.h>
                 #include <tbb/parallel_reduce.h>
-                #include <tbb/blocked_range.h>
-                #include <tbb/concurrent_vector.h>
-                #include <tbb/concurrent_queue.h>
                 """
                 context = tbb_headers + context
             
@@ -112,14 +111,13 @@ def generate_code(config_path):
         - Ensure that the code is thread-safe and avoids race conditions.
         - Optimize loop structures to reduce overhead.
         - Use appropriate parallel constructs to maximize hardware utilization.
-        - **Consider parallel-friendly data structures**: When selecting data structures, ensure they can be efficiently used in a parallel environment. For example, use concurrent data structures or partition data to minimize contention and maximize parallelism.
+        - Consider data structures that work well in parallel environments.
         
-        **TBB-Specific Tips**:
-        - Use `tbb::parallel_for` for parallel loops
-        - Use `tbb::parallel_reduce` for reduction operations
-        - Use `tbb::blocked_range` to define chunks of work
-        - Consider `tbb::concurrent_vector` or `tbb::concurrent_queue` for shared data structures
-        - Use `tbb::global_control` to set the maximum number of threads
+        For each framework:
+        - Serial: Use efficient sequential algorithms
+        - OpenMP: Use pragmas for parallel loops and sections
+        - TBB: Use parallel algorithms for task parallelism
+        - CUDA: Utilize GPU cores for massively parallel computations
         """
         
         user_prompt = {
@@ -131,7 +129,7 @@ def generate_code(config_path):
             api_key=os.getenv('DASHSCOPE_API_KEY'),
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
         )
-
+        
         messages = [
             {"role": "system", "content": system_prompt},
             user_prompt
