@@ -47,7 +47,7 @@
         {
             "type": "graph_bfs",
             "function_signatures": {
-                "CUDA": "void bfs(const CUDAGraph& graph, int start, std::vector<int> & result); // start is the starting node. Save the results in BFS order to the result and print the final size of the result to the terminal",
+                "CUDA": "void bfs(const CUDAGraph& graph, int start, std::vector<int> & result);//start is the starting node. Save the path length of each node into the corresponding item in result.If paralelled,using only paralelled data structure.Utilize the hardware resoureces",
                 "other": "void bfs(const Graph& graph, int start, std::vector<int> & result); //start is the starting node. Save the path length of each node into the corresponding item in result.If paralelled,using only paralelled data structure.Utilize the hardware resoureces"
             },
             "contexts": {

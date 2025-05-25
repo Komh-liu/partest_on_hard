@@ -149,3 +149,6 @@ Model updated to qwen2.5-coder-3b-instruct at 1748004354.7467554
 2025-05-23 21:20:53 - CUDA - array_sum - 编译失败 - 运行时长: N/A
 2025-05-23 21:20:58 - CUDA - matrix_multiply - 运行成功 - 运行时间: 2101ms - 验证成功
 2025-05-23 21:22:18 - CUDA - graph_bfs - 运行成功 - 运行时间: 1962ms - 验证失败
+2025-05-23 21:26:32 - CUDA - array_sum - 运行成功 - 运行时间: 3291ms - 验证失败
+2025-05-23 21:26:36 - CUDA - matrix_multiply - 运行成功 - 运行时间: 264ms - 验证失败
+2025-05-23 21:27:57 - CUDA - graph_bfs - 运行成功 - 运行时间: 1743ms - 验证失败

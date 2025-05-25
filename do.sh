@@ -1,5 +1,5 @@
 cd generate
-python generate.py
+python generate_o3.py
 cp output.json ../driver/output.json
 cd ..
 cd driver
