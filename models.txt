@@ -2,4 +2,6 @@ deepseek-r1
 deepseek-v3
 llama-4-scout-17b-16e-instruct
 qwen-coder-plus
-qwen2.5-coder-3b-instruct
+qwen3-235b-a22b
+qwen3-30b-a3b
+qwen-coder-turbo

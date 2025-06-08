@@ -56,10 +56,10 @@ def generate_code(config_path):
 
     available_frameworks = [
         "Serial",
-        "OpenMP",
-        "TBB",
+        #"OpenMP",
+        #"TBB",
         # "MPI",
-        "CUDA",
+        #"CUDA",
     ]
 
     for task in config["tasks"]:

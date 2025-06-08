@@ -1,0 +1,252 @@
+2025-05-22 20:47:07 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-22 20:48:08 - TBB - array_sum - 编译失败 - 运行时长: N/A
+2025-05-22 20:48:09 - TBB - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-22 20:48:09 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-22 20:52:21 - TBB - array_sum - 运行失败 - 运行时长: 9ms
+  avg_cpu_usage: 5.905555555555555
+  max_cpu_usage: 9.4
+  avg_memory_usage: 0.006748577125558944
+  max_memory_usage: 0.006749208152163544
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+2025-05-22 20:53:51 - TBB - array_sum - 运行成功 - 运行时间: 419ms - 验证失败
+  avg_cpu_usage: 12.2
+  max_cpu_usage: 14.3
+  avg_memory_usage: 0.006748072304275264
+  max_memory_usage: 0.006748072304275264
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  核心代码执行时段: 418.99991035461426ms
+2025-05-22 20:55:34 - TBB - array_sum - 运行成功 - 运行时间: 134ms - 验证失败
+  avg_cpu_usage: 15.5
+  max_cpu_usage: 15.5
+  avg_memory_usage: 0.006738606905206258
+  max_memory_usage: 0.006738606905206258
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  核心代码执行时段: 134.00006294250488ms
+2025-05-22 20:56:38 - TBB - array_sum - 编译失败 - 运行时长: N/A
+2025-05-22 20:56:58 - TBB - matrix_multiply - 运行成功 - 运行时间: 17181ms - 验证成功
+  avg_cpu_usage: 11.967625899280575
+  max_cpu_usage: 16.6
+  avg_memory_usage: 0.00677495403763124
+  max_memory_usage: 0.006774954037631239
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  核心代码执行时段: 17181.999921798706ms
+2025-05-22 23:14:35 - TBB - array_sum - 运行成功 - 运行时间: 613ms - 验证成功
+  avg_cpu_usage: 10.674999999999999
+  max_cpu_usage: 12.4
+  avg_cpu_load_balance_std: 20.38708577264771
+  avg_cpu_load_balance_max_diff: 100.0
+  ctx_switch_voluntary_total: 0
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 1.9276498898828236
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.007558689080544878
+  max_memory_usage: 0.007558689080544878
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.0
+  max_gpu_pcie_throughput: 0
+  核心代码执行时段: 613.0001544952393ms
+2025-05-22 23:14:46 - TBB - matrix_multiply - 运行成功 - 运行时间: 8758ms - 验证成功
+  avg_cpu_usage: 11.367647058823527
+  max_cpu_usage: 13.4
+  avg_cpu_load_balance_std: 12.206860570072228
+  avg_cpu_load_balance_max_diff: 98.22941176470589
+  ctx_switch_voluntary_total: 0
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 0.13581039936955386
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.008799413590510095
+  max_memory_usage: 0.008799413590510093
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.029411764705882353
+  max_gpu_pcie_throughput: 1
+  核心代码执行时段: 8759.000062942505ms
+2025-05-22 23:16:13 - TBB - graph_bfs - 运行成功 - 运行时间: 3162ms - 验证成功
+  avg_cpu_usage: 9.247058823529413
+  max_cpu_usage: 19.0
+  avg_cpu_load_balance_std: 12.897024043480407
+  avg_cpu_load_balance_max_diff: 96.51176470588236
+  ctx_switch_voluntary_total: 2
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 1.2680911766503495
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.00927306215992312
+  max_memory_usage: 0.00927306215992312
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.0
+  max_gpu_pcie_throughput: 0
+  核心代码执行时段: 3161.9999408721924ms
+2025-05-22 23:23:22 - TBB - array_sum - 运行成功 - 运行时间: 6ms - 验证失败
+2025-05-22 23:23:34 - TBB - matrix_multiply - 运行成功 - 运行时间: 9555ms - 验证成功
+2025-05-22 23:25:00 - TBB - graph_bfs - 运行成功 - 运行时间: 3497ms - 验证成功
+2025-05-22 23:25:19 - TBB - array_sum - 运行成功 - 运行时间: 6ms - 验证失败
+2025-05-22 23:25:38 - TBB - array_sum - 运行成功 - 运行时间: 6ms - 验证失败
+  核心代码执行时段: 6.000041961669922ms
+2025-05-22 23:25:50 - TBB - matrix_multiply - 运行成功 - 运行时间: 9268ms - 验证成功
+  avg_cpu_usage: 10.630952380952381
+  max_cpu_usage: 15.0
+  avg_cpu_load_balance_std: 9.701237788494675
+  avg_cpu_load_balance_max_diff: 98.36666666666666
+  ctx_switch_voluntary_total: 0
+  ctx_switch_involuntary_total: 0
+  ctx_switch_voluntary_per_sec: 0.34290907420115907
+  ctx_switch_involuntary_per_sec: 0.0
+  avg_memory_usage: 0.007862988138614727
+  max_memory_usage: 0.007875212025412416
+  avg_gpu_usage: 0.0
+  max_gpu_usage: 0
+  avg_gpu_memory_percent: 1.844671063344732
+  max_gpu_memory_percent: 1.844671063344732
+  avg_gpu_pcie_throughput: 0.023809523809523808
+  max_gpu_pcie_throughput: 1
+  核心代码执行时段: 9268.00012588501ms
+2025-05-23 20:31:27 - TBB - array_sum - 运行成功 - 运行时间: 5ms - 验证失败
+2025-05-23 20:31:33 - TBB - matrix_multiply - 运行成功 - 运行时间: 2709ms - 验证成功
+2025-05-23 20:33:00 - TBB - graph_bfs - 运行成功 - 运行时间: 532ms - 验证成功
+2025-05-23 20:35:33 - TBB - array_sum - 运行成功 - 运行时间: 161ms - 验证失败
+2025-05-23 20:35:40 - TBB - matrix_multiply - 运行成功 - 运行时间: 2856ms - 验证成功
+2025-05-23 20:36:58 - TBB - graph_bfs - 运行成功 - 运行时间: 393ms - 验证成功
+
+Model updated to deepseek-r1 at 1748003899.086805
+2025-05-23 20:42:14 - TBB - array_sum - 运行成功 - 运行时间: 219ms - 验证失败
+2025-05-23 20:42:20 - TBB - matrix_multiply - 运行成功 - 运行时间: 2605ms - 验证成功
+2025-05-23 20:42:21 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to deepseek-v3 at 1748004141.7467802
+2025-05-23 20:43:06 - TBB - array_sum - 运行成功 - 运行时间: 27ms - 验证失败
+2025-05-23 20:43:14 - TBB - matrix_multiply - 运行成功 - 运行时间: 5251ms - 验证成功
+2025-05-23 20:44:29 - TBB - graph_bfs - 运行成功 - 运行时间: 2ms - 验证失败
+
+Model updated to llama-4-scout-17b-16e-instruct at 1748004269.6767685
+2025-05-23 20:45:02 - TBB - array_sum - 运行成功 - 运行时间: 216ms - 验证失败
+2025-05-23 20:45:04 - TBB - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-05-23 20:45:06 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen-coder-plus at 1748004306.6467633
+2025-05-23 20:45:43 - TBB - array_sum - 运行成功 - 运行时间: 213ms - 验证失败
+2025-05-23 20:45:52 - TBB - matrix_multiply - 运行成功 - 运行时间: 5758ms - 验证成功
+2025-05-23 20:45:54 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen2.5-coder-3b-instruct at 1748004354.7467554
+2025-05-23 20:46:22 - TBB - array_sum - 编译失败 - 运行时长: N/A
+2025-05-23 20:46:37 - TBB - matrix_multiply - 运行成功 - 运行时间: 11957ms - 验证失败
+2025-05-23 20:46:38 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-23 21:11:31 - TBB - array_sum - 编译失败 - 运行时长: N/A
+2025-05-23 21:11:39 - TBB - matrix_multiply - 运行成功 - 运行时间: 5395ms - 验证成功
+2025-05-23 21:11:41 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-05-23 21:20:53 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-05-23 21:20:58 - CUDA - matrix_multiply - 运行成功 - 运行时间: 2101ms - 验证成功
+2025-05-23 21:22:18 - CUDA - graph_bfs - 运行成功 - 运行时间: 1962ms - 验证失败
+2025-05-23 21:26:32 - CUDA - array_sum - 运行成功 - 运行时间: 3291ms - 验证失败
+2025-05-23 21:26:36 - CUDA - matrix_multiply - 运行成功 - 运行时间: 264ms - 验证失败
+2025-05-23 21:27:57 - CUDA - graph_bfs - 运行成功 - 运行时间: 1743ms - 验证失败
+2025-06-06 12:35:52 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:35:55 - CUDA - matrix_multiply - 运行成功 - 运行时间: 282ms - 验证失败
+2025-06-06 12:37:20 - CUDA - graph_bfs - 运行成功 - 运行时间: 397ms - 验证成功
+2025-06-06 12:40:36 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:40:40 - CUDA - matrix_multiply - 运行成功 - 运行时间: 247ms - 验证失败
+2025-06-06 12:42:10 - CUDA - graph_bfs - 运行成功 - 运行时间: 398ms - 验证成功
+2025-06-06 12:47:44 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:47:47 - CUDA - matrix_multiply - 运行成功 - 运行时间: 250ms - 验证失败
+2025-06-06 12:49:12 - CUDA - graph_bfs - 运行成功 - 运行时间: 385ms - 验证成功
+2025-06-06 12:49:33 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:49:36 - CUDA - matrix_multiply - 运行成功 - 运行时间: 251ms - 验证成功
+2025-06-06 12:51:04 - CUDA - graph_bfs - 运行成功 - 运行时间: 389ms - 验证成功
+2025-06-06 12:54:20 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:54:23 - CUDA - matrix_multiply - 运行成功 - 运行时间: 253ms - 验证成功
+2025-06-06 12:55:49 - CUDA - graph_bfs - 运行成功 - 运行时间: 534ms - 验证成功
+2025-06-06 12:56:12 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:56:15 - CUDA - matrix_multiply - 运行成功 - 运行时间: 244ms - 验证成功
+2025-06-06 12:56:20 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 12:56:23 - CUDA - matrix_multiply - 运行成功 - 运行时间: 244ms - 验证成功
+2025-06-06 12:58:03 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 13:08:29 - CUDA - array_sum - 运行成功 - 运行时间: 307ms - 验证成功
+2025-06-06 13:08:32 - CUDA - matrix_multiply - 运行成功 - 运行时间: 237ms - 验证成功
+2025-06-06 13:09:54 - CUDA - graph_bfs - 运行成功 - 运行时间: 372ms - 验证失败
+
+Model updated to deepseek-r1 at 1749186964.767981
+2025-06-06 13:21:42 - TBB - array_sum - 运行成功 - 运行时间: 292ms - 验证成功
+2025-06-06 13:21:45 - CUDA - matrix_multiply - 运行成功 - 运行时间: 276ms - 验证成功
+2025-06-06 13:23:07 - OpenMP - graph_bfs - 运行成功 - 运行时间: 827ms - 验证成功
+
+Model updated to deepseek-v3 at 1749187388.090956
+2025-06-06 13:23:50 - OpenMP - array_sum - 运行成功 - 运行时间: 33ms - 验证成功
+2025-06-06 13:23:53 - CUDA - matrix_multiply - 运行成功 - 运行时间: 250ms - 验证成功
+2025-06-06 13:25:14 - OpenMP - graph_bfs - 运行失败 - 运行时长: 79725ms
+
+Model updated to llama-4-scout-17b-16e-instruct at 1749187514.4214582
+2025-06-06 13:25:47 - CUDA - array_sum - 运行成功 - 运行时间: 449ms - 验证失败
+2025-06-06 13:25:50 - CUDA - matrix_multiply - 运行成功 - 运行时间: 405ms - 验证失败
+2025-06-06 13:25:51 - CUDA - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen-coder-plus at 1749187551.6978223
+2025-06-06 13:26:39 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 13:26:42 - CUDA - matrix_multiply - 运行成功 - 运行时间: 271ms - 验证成功
+2025-06-06 13:28:07 - CUDA - graph_bfs - 运行成功 - 运行时间: 285ms - 验证失败
+
+Model updated to qwen3-235b-a22b at 1749187687.976147
+2025-06-06 13:28:10 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 13:28:13 - CUDA - matrix_multiply - 运行成功 - 运行时间: 258ms - 验证成功
+2025-06-06 13:29:40 - CUDA - graph_bfs - 运行成功 - 运行时间: 291ms - 验证失败
+
+Model updated to qwen3-30b-a3b at 1749187780.6223605
+2025-06-06 13:29:42 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 13:29:46 - CUDA - matrix_multiply - 运行成功 - 运行时间: 242ms - 验证成功
+2025-06-06 13:31:11 - CUDA - graph_bfs - 运行成功 - 运行时间: 340ms - 验证失败
+
+Model updated to qwen-coder-turbo at 1749187871.2088492
+2025-06-06 13:31:41 - CUDA - array_sum - 编译失败 - 运行时长: N/A
+2025-06-06 13:31:44 - CUDA - matrix_multiply - 运行成功 - 运行时间: 266ms - 验证失败
+2025-06-06 13:33:05 - CUDA - graph_bfs - 运行成功 - 运行时间: 307ms - 验证失败
+
+Model updated to deepseek-r1 at 1749188811.9079504
+2025-06-06 14:04:17 - TBB - array_sum - 运行成功 - 运行时间: 579ms - 验证成功
+2025-06-06 14:04:24 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 5747ms - 验证成功
+2025-06-06 14:04:25 - OpenMP - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to deepseek-v3 at 1749189865.7746658
+2025-06-06 14:05:04 - OpenMP - array_sum - 运行成功 - 运行时间: 34ms - 验证成功
+2025-06-06 14:05:16 - OpenMP - matrix_multiply - 运行成功 - 运行时间: 10294ms - 验证成功
+2025-06-06 14:06:42 - OpenMP - graph_bfs - 运行成功 - 运行时间: 4399ms - 验证成功
+
+Model updated to llama-4-scout-17b-16e-instruct at 1749190002.7915182
+2025-06-06 14:07:03 - OpenMP - array_sum - 运行成功 - 运行时间: 34ms - 验证成功
+2025-06-06 14:07:03 - OpenMP - matrix_multiply - 编译失败 - 运行时长: N/A
+2025-06-06 14:08:27 - OpenMP - graph_bfs - 运行成功 - 运行时间: 2650ms - 验证失败
+
+Model updated to qwen-coder-plus at 1749190107.9226544
+2025-06-06 14:08:56 - TBB - array_sum - 运行成功 - 运行时间: 366ms - 验证成功
+2025-06-06 14:09:12 - TBB - matrix_multiply - 运行成功 - 运行时间: 13889ms - 验证成功
+2025-06-06 14:09:14 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen3-235b-a22b at 1749190154.5352447
+2025-06-06 14:09:28 - TBB - array_sum - 运行成功 - 运行时间: 405ms - 验证成功
+2025-06-06 14:09:44 - TBB - matrix_multiply - 运行成功 - 运行时间: 13834ms - 验证成功
+2025-06-06 14:09:46 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen3-30b-a3b at 1749190186.3570604
+2025-06-06 14:10:05 - TBB - array_sum - 运行成功 - 运行时间: 503ms - 验证成功
+2025-06-06 14:10:20 - TBB - matrix_multiply - 运行成功 - 运行时间: 13403ms - 验证成功
+2025-06-06 14:10:22 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+
+Model updated to qwen-coder-turbo at 1749190223.0186684
+2025-06-06 14:10:54 - TBB - array_sum - 运行成功 - 运行时间: 624ms - 验证成功
+2025-06-06 14:11:18 - TBB - matrix_multiply - 运行成功 - 运行时间: 22209ms - 验证失败
+2025-06-06 14:11:20 - TBB - graph_bfs - 编译失败 - 运行时长: N/A
+2025-06-07 11:54:46 - Serial - array_sum - 运行成功 - 运行时间: 694ms - 验证成功
+2025-06-07 11:56:18 - Serial - matrix_multiply - 运行成功 - 运行时间: 90590ms - 验证失败
+2025-06-07 11:57:37 - Serial - graph_bfs - 运行成功 - 运行时间: 2921ms - 验证失败
+2025-06-08 11:07:42 - Serial - array_sum - 运行成功 - 运行时间: 699ms - 验证成功
+2025-06-08 11:09:16 - Serial - matrix_multiply - 运行成功 - 运行时间: 92942ms - 验证失败

@@ -172,7 +172,7 @@ int main(int argc, char* argv[]) {
     auto start_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
         time_start.time_since_epoch()
     ).count();
-    std::cout << "[METRICS] BFS_TIME_START=" << start_ms << std::endl << std::flush;
+    std::cout << "[METRICS] MATRIX_TIME_START=" << start_ms << std::endl << std::flush;
 
     // 执行BFS算法
     matrix_multiply(A, result); // 统一函数调用
@@ -182,7 +182,7 @@ int main(int argc, char* argv[]) {
     auto end_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
         time_end.time_since_epoch()
     ).count();
-    std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
+    std::cout << "[METRICS] MATRIX_TIME_END=" << end_ms << std::endl << std::flush;
 
     // 输出耗时和验证结果
     std::cout << "Time: " 

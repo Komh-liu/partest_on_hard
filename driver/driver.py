@@ -131,6 +131,7 @@ def extract_and_compile(metadata, current_dir, temp_dir, monitor_mode):
     
     if compile_result.returncode != 0:
         print("编译失败！")
+        print(compile_result.stderr)
         log_content = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {framework} - {task_type} - 编译失败 - 运行时长: N/A"
         with open('log.txt', 'a') as log_file:
             log_file.write(log_content + '\n')
@@ -161,7 +162,7 @@ def extract_and_compile(metadata, current_dir, temp_dir, monitor_mode):
             }
             print(f"核心代码时间窗口: {phase_times['bfs_start']} - {phase_times['bfs_end']} (持续时间: {(phase_times['bfs_end']-phase_times['bfs_start'])*1000:.1f}ms)")
         else:
-            print("未检测到BFS时间戳标记，将使用完整运行时间分析")
+            print("未检测到时间戳标记，将使用完整运行时间分析")
             
     except subprocess.TimeoutExpired:
         print("测试代码运行超时！")
@@ -208,12 +209,13 @@ def extract_and_compile(metadata, current_dir, temp_dir, monitor_mode):
                 log_file.write(f"  核心代码执行时段: {report['time_window']['duration_ms']}ms\n")
 
     # 生成可视化报告
+    '''
     if monitor_mode:
         try:
             generate_detailed_report(report, task_type, monitor)
         except Exception as e:
             print(f"生成报告时出错: {str(e)}")
-
+    '''
     # 清理临时文件
     shutil.rmtree(temp_dir)
 
@@ -237,7 +239,7 @@ def generate_detailed_report(report: dict, task_name: str, monitor: HardwareMoni
         plt.title(f"CPU Utilization - {task_name}")
         plt.legend()
         plt.tight_layout()
-        plt.savefig(f"{task_name}_cpu_usage.png")
+        # plt.savefig(f"{task_name}_cpu_usage.png")
         plt.close()
 
         # 如果有GPU，绘制GPU使用率图
@@ -255,14 +257,15 @@ def generate_detailed_report(report: dict, task_name: str, monitor: HardwareMoni
             plt.title(f"GPU Utilization - {task_name}")
             plt.legend()
             plt.tight_layout()
-            plt.savefig(f"{task_name}_gpu_usage.png")
+            # plt.savefig(f"{task_name}_gpu_usage.png")
             plt.close()
 
         # 保存JSON报告
         try:
             serializable_report = make_json_serializable(report)
             with open(f"{task_name}_report.json", 'w') as f:
-                json.dump(serializable_report, f, indent=2)
+                print()
+                #json.dump(serializable_report, f, indent=2)
         except Exception as e:
             print(f"保存JSON报告时出错: {str(e)}")
 

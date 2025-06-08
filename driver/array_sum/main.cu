@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
     auto start_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
         time_start.time_since_epoch()
     ).count();
-    std::cout << "[METRICS] BFS_TIME_START=" << start_ms << std::endl << std::flush;
+    std::cout << "[METRICS] ARRAY_TIME_START=" << start_ms << std::endl << std::flush;
 
     // 调用CUDA加速的数组求和函数
     long long sum = array_sum(arr);
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
     auto end_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
         time_end.time_since_epoch()
     ).count();
-    std::cout << "[METRICS] BFS_TIME_END=" << end_ms << std::endl << std::flush;
+    std::cout << "[METRICS] ARRAY_TIME_END=" << end_ms << std::endl << std::flush;
     
     // 输出耗时和验证结果
     std::cout << "Time: " 
